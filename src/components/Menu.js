@@ -15,7 +15,7 @@ function Menu() {
       </div>
       <div className={classes.menuItemGroup}>
         <div className={classes.menuItem} onClick={() => navigate("/gigs")}>
-          Gigs
+          Gigs-HN
         </div>
         <div className={classes.menuItem} onClick={() => navigate("/reads")}>
           Reads
