@@ -191,12 +191,12 @@ function Home() {
         <Spacing size={64} />
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
-            <h1 className={classes.title}>WELCOME TO NOISE SAIGON!</h1>
+            <h1 className={classes.title}>WELCOME TO NOISE HANOI!</h1>
             <div className={classes.content}>
               <div className={classes.leftSpacing}>
                 <b>
                   This site exists to promote the community that music creates
-                  in Saigon, Vietnam.
+                  in Hanoi, Vietnam.
                 </b>
               </div>
               <Spacing size={24} />
@@ -210,7 +210,7 @@ function Home() {
             </div>
           </Grid>
           <Grid item xs={12} md={6}>
-            <h1 className={classes.title}>NOISE SAIGON PLAYLIST</h1>
+            <h1 className={classes.title}>NOISE HANOI PLAYLIST</h1>
             <SpotifyIframe />
           </Grid>
         </Grid>

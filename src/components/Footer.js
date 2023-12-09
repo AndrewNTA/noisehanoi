@@ -13,22 +13,22 @@ function Footer() {
       <Grid container spacing={5}>
         <Grid item xs={12} md={6}>
           <div className={classes.footerLogo} onClick={() => navigate("/")}>
-            Noisesaigon
+            Noisehanoi
           </div>
           <Spacing size={32} />
           <div>
-            Email: <b>noisesaigon@gmail.com</b>
+            Email: <b>noisehanoi@gmail.com</b>
           </div>
           <Spacing size={8} />
           <div>
             Instagram:{" "}
             <a
               className={classes.footerLink}
-              href={"https://www.instagram.com/noisesaigon/"}
+              href={"https://www.instagram.com/noisehanoi/"}
               target="_blank"
               rel="noreferrer"
             >
-              @noisesaigon
+              @noisehanoi
             </a>
           </div>
           <Spacing size={8} />
@@ -36,11 +36,11 @@ function Footer() {
             Facebook:{" "}
             <a
               className={classes.footerLink}
-              href={"https://www.facebook.com/noisesaigon/"}
+              href={"https://www.facebook.com/noisehanoi/"}
               target="_blank"
               rel="noreferrer"
             >
-              Noise Saigon
+              Noise Hanoi
             </a>
           </div>
         </Grid>

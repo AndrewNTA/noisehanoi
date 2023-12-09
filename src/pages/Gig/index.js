@@ -13,7 +13,7 @@ import {
 } from 'components';
 import Banner from 'static/images/banner.png';
 import {
-  genEndDateOfYear,
+  genOneYearQuery,
   genStartDate,
   groupEventsByDate,
   groupEventsByMonth,
@@ -44,7 +44,7 @@ function Gigs() {
   const classes = useStyles();
   const [events, setEvents] = useState([]);
   const startOfDate = useMemo(genStartDate, []);
-  const endOfDate = useMemo(genEndDateOfYear, []);
+  const endOfDate = useMemo(genOneYearQuery, []);
   const [getEvents, { data, loading }] = useLazyQuery(EVENTS_QUERY);
 
   useEffect(() => {
@@ -62,7 +62,6 @@ function Gigs() {
   }, []);
 
   useEffect(() => {
-    console.log('debug log ===>', data?.events);
     if (data?.events.length) {
       const newEvents = [...events, ...data.events];
       setEvents(newEvents);
@@ -128,7 +127,7 @@ function Gigs() {
             })}
         </Grid>
         <Grid item xs={12} sm={4} className={classes.section}>
-          <div className={classes.title}>NOISE SAIGON PLAYLIST</div>
+          <div className={classes.title}>NOISE HANOI PLAYLIST</div>
           <Spacing size={32} />
           <SpotifyIframe />
           <Spacing size={32} />
@@ -139,7 +138,7 @@ function Gigs() {
             event you think should be listed here, hit the submit button below.
           </div>
           <a
-            href="mailto:noisesaigon@gmail.com"
+            href="mailto:noisehanoi@gmail.com"
             className={classes.sendEmailBtn}
           >
             Send an Email

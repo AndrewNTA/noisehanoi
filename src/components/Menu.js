@@ -11,11 +11,11 @@ function Menu() {
   return (
     <div className={classes.menuWrapper}>
       <div className={classes.menuLogoWrapper} onClick={() => navigate("/")}>
-        <img src={Logo} alt="noisesaigon" className={classes.menuLogo} />
+        <img src={Logo} alt="noisehanoi" className={classes.menuLogo} />
       </div>
       <div className={classes.menuItemGroup}>
         <div className={classes.menuItem} onClick={() => navigate("/gigs")}>
-          Gigs-HN
+          Gigs
         </div>
         <div className={classes.menuItem} onClick={() => navigate("/reads")}>
           Reads

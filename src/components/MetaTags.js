@@ -1,9 +1,9 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 
-const DEFAULT_TITLE = "Noise Saigon";
-const DEFAULT_DESCRIPTION = "live.music.SaiGon.";
-const DEFAULT_KEY_WORDS = "Music, Events, Saigon, Drums, Festival, Liveshow, Bia, Live, Coffee, Rock, Ho Chi Minh";
+const DEFAULT_TITLE = "Noise Hanoi";
+const DEFAULT_DESCRIPTION = "live.music.HaNoi.";
+const DEFAULT_KEY_WORDS = "Music, Events, HaNoi, Drums, Festival, Liveshow, Bia, Live, Coffee, Rock, Ho Chi Minh";
 const DEFAULT_THUMBNAIL_URL =
   "https://media.graphassets.com/resize=fit:clip,height:600,width:970/Do1dGjAUTWeFv64ZSMpu";
 
@@ -11,7 +11,7 @@ function MetaTags({ title, desc, keyWords, thumbnailUrl }) {
   return (
     <Helmet>
       <title>{title ? title : DEFAULT_TITLE}</title>
-      <link rel="canonical" href="https://www.noisesaigon.com/" />
+      <link rel="canonical" href="https://www.noisehanoi.com/" />
       <meta
         property="article:tag"
         content={keyWords ? keyWords : DEFAULT_KEY_WORDS}
@@ -28,11 +28,11 @@ function MetaTags({ title, desc, keyWords, thumbnailUrl }) {
 
       {/* Start Facebook metatag */}
       <meta property="og:title" content={title ? title : DEFAULT_TITLE} />
-      <meta property="og:site_name" content="www.noisesaigon.com"></meta>
+      <meta property="og:site_name" content="www.noisehanoi.com"></meta>
       <meta
         property="og:url"
         itemprop="url"
-        content="https://www.noisesaigon.com/"
+        content="https://www.noisehanoi.com/"
       ></meta>
       <meta
         content={desc ? desc : DEFAULT_DESCRIPTION}
@@ -57,7 +57,7 @@ function MetaTags({ title, desc, keyWords, thumbnailUrl }) {
       {/* End Facebook metatag */}
       {/* Start twitter metatag */}
       <meta name="twitter:card" value="summary"></meta>
-      <meta name="twitter:url" content="https://www.noisesaigon.com/"></meta>
+      <meta name="twitter:url" content="https://www.noisehanoi.com/"></meta>
       <meta name="twitter:title" content={title ? title : DEFAULT_TITLE}></meta>
       <meta
         name="twitter:description"
