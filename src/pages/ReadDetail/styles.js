@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "1.125rem",
     fontSize: "0.875rem",
     textTransform: "uppercase",
-    color: "#E02020",
+    color: "#1EBDD3",
   },
   value: {
     lineHeight: "1.75rem",

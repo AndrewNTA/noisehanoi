@@ -39,8 +39,8 @@ const useStyles = makeStyles((theme) => ({
     color: "#000",
     textDecorationLine: "none",
     "&:hover": {
-      border: "2px solid #E02020",
-      color: "#E02020",
+      border: "2px solid #1EBDD3",
+      color: "#1EBDD3",
     },
   },
 }));

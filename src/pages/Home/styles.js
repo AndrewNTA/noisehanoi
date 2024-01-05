@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "1rem",
   },
   eventLabel: {
-    color: "#E02020",
+    color: "#1EBDD3",
     textTransform: "uppercase",
     lineHeight: "1.25rem",
     fontSize: "1.125rem",

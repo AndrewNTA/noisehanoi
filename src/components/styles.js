@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "uppercase",
     fontSize: "1.125rem",
     paddingLeft: "0.75rem",
-    borderLeft: "2px solid #E02020",
+    borderLeft: "2px solid #1EBDD3",
     marginBottom: "1.125rem",
     cursor: "pointer",
   },
@@ -48,8 +48,8 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: "2px solid white",
     textAlign: "center",
     "&:hover": {
-      color: "#E02020",
-      borderBottom: "2px solid #E02020",
+      color: "#1EBDD3",
+      borderBottom: "2px solid #1EBDD3",
     },
     [theme.breakpoints.down("md")]: {
       padding: "4px 1.25rem",
@@ -137,7 +137,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#000",
     "&:hover": {
       textDecorationLine: "underline",
-      color: "#E02020",
+      color: "#1EBDD3",
     },
   },
   eventRow: {
@@ -194,8 +194,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     textTransform: "uppercase",
     "&:hover": {
-      border: "2px solid #E02020",
-      color: "#E02020",
+      border: "2px solid #1EBDD3",
+      color: "#1EBDD3",
     },
   },
   // more button end
@@ -258,7 +258,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.125rem",
     lineHeight: "1.75rem",
     fontWeight: 600,
-    color: "#E02020",
+    color: "#1EBDD3",
   },
   giDate: {
     fontSize: "2.25rem",
@@ -275,7 +275,7 @@ const useStyles = makeStyles((theme) => ({
     right: "25px",
     padding: "0.5rem",
     borderRadius: "12px",
-    backgroundColor: "#E02020",
+    backgroundColor: "#1EBDD3",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",

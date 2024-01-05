@@ -1,8 +1,8 @@
-import React, { useEffect, useMemo } from "react";
-import { Container, Grid, Skeleton, Typography } from "@mui/material";
-import { useQuery, gql } from "@apollo/client";
-import ImageGallery from "react-image-gallery";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useEffect, useMemo } from 'react';
+import { Container, Grid, Skeleton, Typography } from '@mui/material';
+import { useQuery, gql } from '@apollo/client';
+import ImageGallery from 'react-image-gallery';
+import { useParams, useNavigate } from 'react-router-dom';
 import {
   Menu,
   Footer,
@@ -10,10 +10,10 @@ import {
   ScrollTopBtn,
   SkeletonReadLoading,
   MetaTags,
-} from "components";
-import { formatDisplayFullDate, genKeyWords } from "utils";
-import useStyles from "./styles";
-import "react-image-gallery/styles/css/image-gallery.css";
+} from 'components';
+import { formatDisplayFullDate, genKeyWords } from 'utils';
+import useStyles from './styles';
+import 'react-image-gallery/styles/css/image-gallery.css';
 
 const ARTICLE_QUERY = gql`
   query Article($id: ID) {
@@ -27,7 +27,7 @@ const ARTICLE_QUERY = gql`
       content {
         html
       }
-      gallery {
+      gallery(first: 30) {
         url(
           transformation: {
             image: { resize: { fit: clip, height: 600, width: 970 } }
@@ -75,12 +75,12 @@ function ReadDetail() {
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   }, []);
 
   if (!loading && !articleData) {
-    navigate("/not-found");
+    navigate('/not-found');
   }
   return (
     <Container maxWidth="lg">
@@ -109,7 +109,7 @@ function ReadDetail() {
                 <div
                   className={classes.text}
                   dangerouslySetInnerHTML={{
-                    __html: articleData?.content?.html ?? "",
+                    __html: articleData?.content?.html ?? '',
                   }}
                 />
               </>

@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
       },
   },
   btn: {
-    backgroundColor: "#E02020",
+    backgroundColor: "#1EBDD3",
     color: "#fff",
     fontWeight: 600,
     cursor: "pointer",

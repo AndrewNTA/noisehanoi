@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'uppercase',
     fontSize: '1.125rem',
     paddingLeft: '0.75rem',
-    borderLeft: '2px solid #E02020',
+    borderLeft: '2px solid #1EBDD3',
     marginBottom: '1.125rem',
     cursor: 'pointer',
   },
