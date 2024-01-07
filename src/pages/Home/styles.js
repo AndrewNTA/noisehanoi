@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
   },
   main: {
     padding: "1.25rem",
+    color: "white",
     [theme.breakpoints.down("sm")]: {
       padding: "1.25rem 0",
     },
@@ -16,15 +17,15 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 600,
     textTransform: "uppercase",
     lineHeight: "1.25rem",
-    borderBottom: "1px solid black",
+    borderBottom: "1px solid white",
     fontSize: "1.375rem",
   },
   eventDate: {
     textTransform: "uppercase",
     lineHeight: "1.25rem",
-    borderBottom: "1px solid black",
+    borderBottom: "1px solid white",
     fontSize: "1.125rem",
-    color: "#6D7278",
+    color: "#CFCFCF",
     paddingBottom: "4px",
     fontWeight: 400,
     marginTop: "2.5rem",

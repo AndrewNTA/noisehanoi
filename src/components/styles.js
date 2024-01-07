@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "4px 2rem",
     width: "6rem",
     fontWeight: 600,
-    borderBottom: "2px solid white",
+    borderBottom: "2px solid black",
     textAlign: "center",
     "&:hover": {
       color: "#1EBDD3",
@@ -107,22 +107,22 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "1.25rem",
     textTransform: "uppercase",
     fontSize: "0.875rem",
-    color: "#7f7f7f",
+    color: "#CFCFCF",
     marginRight: "0.75rem",
     paddingRight: "0.75rem",
-    borderRight: "1px solid #7f7f7f",
+    borderRight: "1px solid #CFCFCF",
   },
   eventVenue: {
     lineHeight: "1.25rem",
     textTransform: "uppercase",
     fontSize: "0.875rem",
-    color: "#7f7f7f",
+    color: "#CFCFCF",
   },
   eventVenueLink: {
     lineHeight: "1.25rem",
     textTransform: "uppercase",
     fontSize: "0.875rem",
-    color: "#7f7f7f",
+    color: "#CFCFCF",
     cursor: "pointer",
     textDecorationLine: "none",
   },
@@ -134,7 +134,7 @@ const useStyles = makeStyles((theme) => ({
   eventMoreInfoText: {
     lineHeight: "1.25rem",
     fontSize: "0.875rem",
-    color: "#000",
+    color: "#ffffff",
     "&:hover": {
       textDecorationLine: "underline",
       color: "#1EBDD3",
@@ -169,7 +169,8 @@ const useStyles = makeStyles((theme) => ({
   eventOptional: {
     marginTop: "0.75rem",
     backgroundColor: "#FEFCE8",
-    border: "1px solid #000",
+    color: "black",
+    border: "1px solid #fff",
     borderRadius: "2px",
     padding: "0.5rem 1rem 0.5rem 1.5rem",
     position: "relative",
@@ -184,7 +185,7 @@ const useStyles = makeStyles((theme) => ({
   mbWrapper: {
     padding: "8px 12px",
     borderRadius: "4px",
-    border: "2px solid #000",
+    border: "2px solid #ffffff",
     cursor: "pointer",
     marginTop: "20px",
     fontSize: "1.125rem",
@@ -202,8 +203,8 @@ const useStyles = makeStyles((theme) => ({
 
   // footer start
   footerWrapper: {
-    color: "#E5E7EB",
-    backgroundColor: "#000000",
+    color: "#000000",
+    backgroundColor: "#ffffff",
     padding: "3.5rem 2.5rem",
     marginTop: "4rem",
     fontSize: "0.875rem",
@@ -216,7 +217,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "uppercase",
   },
   footerLink: {
-    color: "white",
+    color: "black",
     fontWeight: 500,
     marginLeft: "3px",
     "&:hover": {
@@ -230,7 +231,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "2rem",
   },
   footerItem: {
-    color: "white",
+    color: "black",
     fontWeight: 400,
     marginBottom: "12px",
     cursor: "pointer",
@@ -264,7 +265,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "2.25rem",
     lineHeight: "2.5rem",
     fontWeight: 600,
-    color: "#000000",
+    color: "#ffffff",
   },
   // gig item end
 

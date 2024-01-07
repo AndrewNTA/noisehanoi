@@ -14,10 +14,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1.375rem',
     lineHeight: '1.75rem',
     textTransform: 'uppercase',
-    borderBottom: '1px solid #000',
+    borderBottom: '1px solid #fff',
     padding: '0 0.75rem 0.175rem 0.75rem',
     fontWeight: 600,
-    color: '#000',
+    color: '#fff',
   },
   title: {
     lineHeight: '1.25rem',

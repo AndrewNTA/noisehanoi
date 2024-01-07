@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "uppercase",
     padding: "0 0.75rem 0.175rem 0.75rem",
     fontWeight: 600,
-    color: "#000",
+    color: "#fff",
     marginBottom: "2rem",
     fontStyle: "italic",
     [theme.breakpoints.down("sm")]: {
@@ -31,10 +31,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.25rem",
     marginBottom: "0.75rem",
     margin: "1.2rem 0",
-    color: "#374151",
+    color: "#afafaf",
     fontFamily: "IBM Plex Sans Condensed,sans-serif",
     '& a': {
-      color: "#111",
+      color: "#eee",
       fontWeight: 500,
     },
     '& img': {

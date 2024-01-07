@@ -15,6 +15,7 @@ const boxStyle = {
   outline: "none",
   borderRadius: "4px",
   textAlign: "center",
+  color: "black"
 };
 
 function MoreInfoModal({ isOpen, onClose, src }) {
