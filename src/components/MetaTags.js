@@ -5,7 +5,7 @@ const DEFAULT_TITLE = "Noise Hanoi";
 const DEFAULT_DESCRIPTION = "live.music.HaNoi.";
 const DEFAULT_KEY_WORDS = "Music, Events, HaNoi, Drums, Festival, Liveshow, Bia, Live, Coffee, Rock, Ho Chi Minh";
 const DEFAULT_THUMBNAIL_URL =
-  "https://media.graphassets.com/resize=fit:clip,height:600,width:970/Do1dGjAUTWeFv64ZSMpu";
+  "https://media.graphassets.com/g0u8F0NReulFIRCA4IKW";
 
 function MetaTags({ title, desc, keyWords, thumbnailUrl }) {
   return (
