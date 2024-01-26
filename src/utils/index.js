@@ -8,36 +8,36 @@ import {
   months,
 } from "constants/index";
 
-export const groupLinks = (links) => {
-  if (!links) return null;
+export const groupPlaces = (places) => {
+  if (!places) return null;
   const result = {};
-  for (let i in links) {
-    if (links[i]?.type === BLOG) {
-      result[BLOG] = result[BLOG] ? [...result[BLOG], links[i]] : [links[i]];
-    } else if (links[i]?.type === VENUE) {
-      result[VENUE] = result[VENUE] ? [...result[VENUE], links[i]] : [links[i]];
-    } else if (links[i]?.type === RECORD_STORE) {
+  for (let i in places) {
+    if (places[i]?.type === BLOG) {
+      result[BLOG] = result[BLOG] ? [...result[BLOG], places[i]] : [places[i]];
+    } else if (places[i]?.type === VENUE) {
+      result[VENUE] = result[VENUE] ? [...result[VENUE], places[i]] : [places[i]];
+    } else if (places[i]?.type === RECORD_STORE) {
       result[RECORD_STORE] = result[RECORD_STORE]
-        ? [...result[RECORD_STORE], links[i]]
-        : [links[i]];
-    } else if (links[i]?.type === REHEARSAL_SPACE) {
+        ? [...result[RECORD_STORE], places[i]]
+        : [places[i]];
+    } else if (places[i]?.type === REHEARSAL_SPACE) {
       result[REHEARSAL_SPACE] = result[REHEARSAL_SPACE]
-        ? [...result[REHEARSAL_SPACE], links[i]]
-        : [links[i]];
-    } else if (links[i]?.type === COMMUNITY) {
+        ? [...result[REHEARSAL_SPACE], places[i]]
+        : [places[i]];
+    } else if (places[i]?.type === COMMUNITY) {
       result[COMMUNITY] = result[COMMUNITY]
-        ? [...result[COMMUNITY], links[i]]
-        : [links[i]];
+        ? [...result[COMMUNITY], places[i]]
+        : [places[i]];
     } else {
       result[PROMOTER] = result[PROMOTER]
-        ? [...result[PROMOTER], links[i]]
-        : [links[i]];
+        ? [...result[PROMOTER], places[i]]
+        : [places[i]];
     }
   }
   return result;
 };
 
-export const mapLinkGroupDisplay = (key) => {
+export const mapPlaceGroupDisplay = (key) => {
   switch (key) {
     case BLOG:
       return "BLOGS";

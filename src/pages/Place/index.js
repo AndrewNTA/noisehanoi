@@ -10,12 +10,12 @@ import {
   MetaTags,
 } from 'components';
 import Banner from 'static/images/banner.png';
-import { groupLinks, mapLinkGroupDisplay } from 'utils';
+import { groupPlaces, mapPlaceGroupDisplay } from 'utils';
 import useStyles from './styles';
 
-const LINKS_QUERY = gql`
-  query Links($skipIdx: Int) {
-    links(first: 100, skip: $skipIdx) {
+const PLACES_QUERY = gql`
+  query Places($skipIdx: Int) {
+    places(first: 100, skip: $skipIdx) {
       id
       name
       description
@@ -24,15 +24,15 @@ const LINKS_QUERY = gql`
     }
   }
 `;
-
-function Link() {
+// Place is old place
+function Place() {
   const classes = useStyles();
   const total = useRef(100);
-  const [links, setLinks] = useState([]);
-  const [getLinks, { data, loading }] = useLazyQuery(LINKS_QUERY);
+  const [places, setPlaces] = useState([]);
+  const [getPlaces, { data, loading }] = useLazyQuery(PLACES_QUERY);
 
   useEffect(() => {
-    getLinks({
+    getPlaces({
       variables: {
         skipIdx: 0
       }
@@ -45,12 +45,12 @@ function Link() {
   }, []);
 
   useEffect(() => {
-    if (data?.links.length) {
-      const newLinks = [...links, ...data.links];
-      setLinks(newLinks);
+    if (data?.places.length) {
+      const newPlaces = [...places, ...data.places];
+      setPlaces(newPlaces);
     }
-    if (data?.links.length === 100) {
-      getLinks({
+    if (data?.places.length === 100) {
+      getPlaces({
         variables: {
           skipIdx: total.current
         }
@@ -58,10 +58,10 @@ function Link() {
       total.current = total.current + 100;
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data?.links])
+  }, [data?.places])
 
-  const groupedLinks = groupLinks(links);
-  const groupKeys = groupedLinks && Object.keys(groupedLinks);
+  const groupedPlaces = groupPlaces(places);
+  const groupKeys = groupedPlaces && Object.keys(groupedPlaces);
 
   return (
     <Container maxWidth="lg">
@@ -71,7 +71,7 @@ function Link() {
       <Spacing size={24} />
       <div className="google-map-code">
         <iframe
-          src="https://maper.app/map-details/HfaEikSjTtW7ETZ27vXB?go=true"
+          src="https://maper.app/map-details/NoMNC6ap70SRt3IaRb3z?go=true"
           width="100%"
           height="400"
           frameborder="0"
@@ -84,25 +84,25 @@ function Link() {
       </div>
       <Spacing size={48} />
       <div>
-        <div className={classes.section}>A BUNCH OF LINKS</div>
+        <div className={classes.section}>A BUNCH OF PLACES</div>
         <Spacing size={32} />
         {loading && <SkeletonLoading length={4} />}
         {!loading &&
-          groupedLinks &&
+          groupedPlaces &&
           groupKeys.map((key) => (
             <div key={key}>
-              <div className={classes.title}>{mapLinkGroupDisplay(key)}</div>
-              {groupedLinks[key].map((link) => (
-                <div key={link.id}>
+              <div className={classes.title}>{mapPlaceGroupDisplay(key)}</div>
+              {groupedPlaces[key].map((place) => (
+                <div key={place.id}>
                   <a
-                    className={classes.link}
-                    href={link.url}
+                    className={classes.place}
+                    href={place.url}
                     target="_blank"
                     rel="noreferrer"
                   >
-                    {link.name}
+                    {place.name}
                   </a>
-                  <div className={classes.text}>{link.description}</div>
+                  <div className={classes.text}>{place.description}</div>
                 </div>
               ))}
               <Spacing size={32} />
@@ -115,4 +115,4 @@ function Link() {
   );
 }
 
-export default Link;
+export default Place;

@@ -67,9 +67,15 @@ function Footer() {
               </div>
               <div
                 className={classes.footerItem}
-                onClick={() => navigate("/links")}
+                onClick={() => navigate("/places")}
               >
-                Links
+                Places
+              </div>
+              <div
+                className={classes.footerItem}
+                onClick={() => navigate("/artists")}
+              >
+                Artists
               </div>
             </Grid>
           </Grid>

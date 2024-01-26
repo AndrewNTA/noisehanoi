@@ -10,21 +10,16 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 600,
     color: '#fff',
   },
-  title: {
-    lineHeight: '1.25rem',
-    fontStyle: 'italic',
-    fontWeight: 700,
-    textTransform: 'uppercase',
-    fontSize: '1.125rem',
-    paddingLeft: '0.75rem',
-    borderLeft: '2px solid #1EBDD3',
-    marginBottom: '2rem',
+  wrapper: {
+    display: 'flex',
+    alignItems: 'top',
+    justifyContent: 'flex-start',
   },
-  link: {
+  name: {
     lineHeight: '1.75rem',
-    fontSize: '0.875rem',
+    fontSize: '1rem',
     paddingLeft: '0.75rem',
-    fontWeight: 600,
+    fontWeight: 700,
     cursor: 'pointer',
     color: '#fff',
     textDecorationLine: 'none',
@@ -32,16 +27,22 @@ const useStyles = makeStyles((theme) => ({
       color: '#1EBDD3',
     },
   },
-  text: {
+  bio: {
     lineHeight: '1.125rem',
     fontSize: '0.875rem',
     paddingLeft: '0.75rem',
     paddingRight: '4rem',
+    marginTop: '0.5rem',
     marginBottom: '0.5rem',
     textAlign: 'justify',
     [theme.breakpoints.down('sm')]: {
       paddingRight: 0,
     },
+  },
+  photo: {
+    width: '200px',
+    height: '125px',
+    marginRight: '1rem',
   },
   bg: {
     width: '100%',
