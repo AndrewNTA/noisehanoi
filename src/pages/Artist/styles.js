@@ -14,11 +14,14 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'top',
     justifyContent: 'flex-start',
+    marginBottom: '1.5rem',
+    [theme.breakpoints.down('sm')]: {
+      display: 'block',
+    },
   },
   name: {
-    lineHeight: '1.75rem',
+    lineHeight: '1rem',
     fontSize: '1rem',
-    paddingLeft: '0.75rem',
     fontWeight: 700,
     cursor: 'pointer',
     color: '#fff',
@@ -30,19 +33,23 @@ const useStyles = makeStyles((theme) => ({
   bio: {
     lineHeight: '1.125rem',
     fontSize: '0.875rem',
-    paddingLeft: '0.75rem',
-    paddingRight: '4rem',
     marginTop: '0.5rem',
-    marginBottom: '0.5rem',
     textAlign: 'justify',
     [theme.breakpoints.down('sm')]: {
-      paddingRight: 0,
+      paddingLeft: 0,
+      marginTop: '0.125rem',
     },
   },
   photo: {
     width: '200px',
     height: '125px',
-    marginRight: '1rem',
+    paddingRight: '1.25rem',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      height: 'auto',
+      marginBottom: '12px',
+      paddingRight: 0,
+    },
   },
   bg: {
     width: '100%',
