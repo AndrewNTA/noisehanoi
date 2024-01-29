@@ -132,19 +132,18 @@ function Home() {
             <div className={classes.content}>
               {keys.map((k) => {
                 const eventList = groupedEvents[k] ?? null;
-                const date = parseInt(k);
+                const [month, date] = k.split('-');
                 const label =
-                  date === currentDate
+                  parseInt(date) === currentDate
                     ? "today"
-                    : date === currentDate + 1
+                    : parseInt(date) === currentDate + 1
                     ? "tomorrow"
                     : "";
-                const month = months[new Date().getMonth()];
                 return (
-                  <div key={`${date}-${month}`}>
+                  <div key={k}>
                     <div className={classes.eventDate}>
                       <span className={classes.eventLabel}>{label}</span>
-                      {`${date} ${month}`}
+                      {`${date} ${months[month]}`}
                     </div>
                     {eventList &&
                       eventList.map((ev) => (
