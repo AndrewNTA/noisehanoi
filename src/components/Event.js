@@ -12,9 +12,12 @@ function Event({
   price,
   optionalInfo,
   facebookLink,
+  preSalePrice,
 }) {
   const classes = useStyles();
-
+  const preSalePriceDisplay = preSalePrice
+    ? `- ${formatPrice(preSalePrice)} vnd ticket presale`
+    : '';
   return (
     <div className={classes.eventWrapper}>
       <div className={classes.eventName}>{eventName}</div>
@@ -46,7 +49,9 @@ function Event({
             More info
           </a>
         </div>
-        <div className={classes.eventPrice}>{`${formatPrice(price)} vnd`}</div>
+        <div className={classes.eventPrice}>{`${formatPrice(
+          price
+        )} vnd ${preSalePriceDisplay}`}</div>
       </div>
       {optionalInfo && (
         <div className={classes.eventOptional}>

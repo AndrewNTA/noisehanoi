@@ -21,6 +21,7 @@ function GigItem({ day, date, events }) {
             optionalInfo={ev.optionalInfo}
             extraInfo={ev.extraInfo}
             price={ev.price}
+            preSalePrice={ev.preSalePrice}
           />
         ))}
       </div>

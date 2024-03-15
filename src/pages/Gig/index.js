@@ -31,6 +31,7 @@ const EVENTS_QUERY = gql`
       extraInfo
       eventName
       price
+      preSalePrice
       optionalInfo
       venueLink
       venueName

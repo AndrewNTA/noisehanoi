@@ -44,7 +44,7 @@ const BANNERS_QUERY = gql`
 
 const ARTICLES_QUERY = gql`
   query Articles {
-    articles(first: 5, orderBy: publishedAt_DESC) {
+    articles(first: 10, orderBy: publishedAt_DESC) {
       brief
       id
       name
@@ -63,6 +63,7 @@ const EVENTS_QUERY = gql`
       extraInfo
       eventName
       price
+      preSalePrice
       optionalInfo
       venueLink
       venueName
@@ -157,6 +158,7 @@ function Home() {
                           optionalInfo={ev.optionalInfo}
                           extraInfo={ev.extraInfo}
                           price={ev.price}
+                          preSalePrice={ev.preSalePrice}
                         />
                       ))}
                   </div>
