@@ -55,7 +55,7 @@ const ARTICLES_QUERY = gql`
 const EVENTS_QUERY = gql`
   query Events($start: DateTime, $end: DateTime) {
     events(
-      first: 5
+      first: 10
       where: { time_gte: $start, time_lte: $end }
       orderBy: time_ASC
     ) {
