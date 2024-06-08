@@ -168,7 +168,7 @@ const useStyles = makeStyles((theme) => ({
   },
   eventOptional: {
     marginTop: "0.75rem",
-    backgroundColor: "#FEFCE8",
+    backgroundColor: "#FFFFFF",
     color: "black",
     border: "1px solid #fff",
     borderRadius: "2px",

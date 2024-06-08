@@ -1,7 +1,7 @@
-import React, { useCallback, useMemo, useEffect } from "react";
-import { Container, Grid } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { useQuery, gql } from "@apollo/client";
+import React, { useCallback, useMemo, useEffect } from 'react';
+import { Container, Grid } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { useQuery, gql } from '@apollo/client';
 import {
   Spacing,
   Article,
@@ -12,12 +12,12 @@ import {
   ScrollTopBtn,
   SpotifyIframe,
   SkeletonLoading,
-  MetaTags
-} from "components";
-import { months } from "constants/index";
-import { genEndDate, genStartDate, groupEventsByDate } from "utils";
-import ImageGallery from "react-image-gallery";
-import useStyles from "./styles";
+  MetaTags,
+} from 'components';
+import { months } from 'constants/index';
+import { genEndDate, genStartDate, groupEventsByDate } from 'utils';
+import ImageGallery from 'react-image-gallery';
+import useStyles from './styles';
 
 const genImages = (arr) => {
   if (!arr || arr.length === 0) return null;
@@ -91,7 +91,7 @@ function Home() {
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   }, []);
 
@@ -133,13 +133,14 @@ function Home() {
             <div className={classes.content}>
               {keys.map((k) => {
                 const eventList = groupedEvents[k] ?? null;
+                const day = eventList?.[0]?.day;
                 const [month, date] = k.split('-');
                 const label =
                   parseInt(date) === currentDate
-                    ? "today"
+                    ? 'today'
                     : parseInt(date) === currentDate + 1
-                    ? "tomorrow"
-                    : "";
+                    ? 'tomorrow'
+                    : day;
                 return (
                   <div key={k}>
                     <div className={classes.eventDate}>
@@ -164,7 +165,7 @@ function Home() {
                   </div>
                 );
               })}
-              <MoreButton text="more gigs" onClick={() => navigate("/gigs")} />
+              <MoreButton text="more gigs" onClick={() => navigate('/gigs')} />
             </div>
           </Grid>
           <Grid item xs={12} md={6}>
@@ -183,7 +184,7 @@ function Home() {
                 ))}
                 <MoreButton
                   text="more reads"
-                  onClick={() => navigate("/reads")}
+                  onClick={() => navigate('/reads')}
                 />
               </div>
             )}
