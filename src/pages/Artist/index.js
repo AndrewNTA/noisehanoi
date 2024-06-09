@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Container } from '@mui/material';
 import { useLazyQuery, gql } from '@apollo/client';
 import {
@@ -10,6 +11,7 @@ import {
   MetaTags,
 } from 'components';
 import Banner from 'static/images/banner.png';
+import GroupBand from './Group';
 import useStyles from './styles';
 
 const ARTISTS_QUERY = gql`
@@ -31,6 +33,8 @@ const ARTISTS_QUERY = gql`
 `;
 function Artist() {
   const classes = useStyles();
+  const [searchParams] = useSearchParams();
+  searchParams.get('group_key');
   const total = useRef(100);
   const [artists, setArtists] = useState([]);
   const [getArtists, { data, loading }] = useLazyQuery(ARTISTS_QUERY);
@@ -73,6 +77,7 @@ function Artist() {
       <div>
         <div className={classes.section}>A BUNCH OF ARTISTS</div>
         <Spacing size={32} />
+        <GroupBand />
         {loading && <SkeletonLoading length={4} />}
         {!loading &&
           data?.artists &&

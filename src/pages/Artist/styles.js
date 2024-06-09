@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
   wrapper: {
     display: 'flex',
-    alignItems: 'top',
+    alignItems: 'start',
     justifyContent: 'flex-start',
     marginBottom: '1.5rem',
     [theme.breakpoints.down('sm')]: {
@@ -53,6 +53,52 @@ const useStyles = makeStyles((theme) => ({
   },
   bg: {
     width: '100%',
+  },
+  // Group band
+  groupBandBox: {
+    width: '49%',
+    boxSizing: 'border-box',
+    padding: '16px',
+    marginBottom: '2rem',
+    border: '1px solid #ffffff',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      padding: '10px',
+      marginBottom: '1rem',
+    },
+  },
+  groupBandTitle: {
+    color: '#ffffff',
+    fontSize: '1rem',
+    fontWeight: 700,
+    fontStyle: 'italic',
+    marginTop: 0,
+    marginBottom: '1rem',
+    [theme.breakpoints.down('sm')]: {
+      fontWeight: 600,
+    },
+  },
+  groupBandContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+  },
+  groupBandImagesContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  groupBandImg: {
+    float: 'left',
+    width: '30%',
+    height: '6rem',
+    objectFit: 'cover',
+    [theme.breakpoints.down('sm')]: {
+      height: '3.5rem',
+    },
   },
 }));
 
