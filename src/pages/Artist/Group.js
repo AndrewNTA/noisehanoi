@@ -28,8 +28,8 @@ import useStyles from './styles';
 
 const groupList = [
   {
-    id: 'rock_indie_folk',
-    title: 'Rock / Indie / Folk',
+    id: 'rock_indie',
+    title: 'Rock / Indie',
     images: [ImgGr1T1, ImgGr1T2, ImgGr1T3],
   },
   {
@@ -39,19 +39,19 @@ const groupList = [
   },
 
   {
-    id: 'rock_indie_folk',
+    id: 'punk_metal_grunge',
     title: 'Punk / Metal / Grunge',
     images: [ImgGr3T1, ImgGr3T2, ImgGr3T3],
   },
   {
-    id: 'soul_jazz_blues',
-    title: 'Soul / Jazz / Blues',
+    id: 'soul_jazz_blues_folk',
+    title: 'Soul / Jazz / Blues / Folk',
     images: [ImgGr4T1, ImgGr4T2, ImgGr4T3],
   },
 
   {
-    id: 'electronic_experimental',
-    title: 'Electronic / Experimental',
+    id: 'electronic_experimental_other',
+    title: 'Electronic / Experimental / Other',
     images: [ImgGr5T1, ImgGr5T2, ImgGr5T3],
   },
   {
