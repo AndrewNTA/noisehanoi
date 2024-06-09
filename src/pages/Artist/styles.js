@@ -54,6 +54,11 @@ const useStyles = makeStyles((theme) => ({
   bg: {
     width: '100%',
   },
+  paginationWrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '2rem',
+  },
   // Group band
   groupBandBox: {
     width: '49%',

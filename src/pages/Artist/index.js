@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { Container } from '@mui/material';
+import React, { useEffect, useState, useMemo } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Container, Pagination } from '@mui/material';
 import { useLazyQuery, gql } from '@apollo/client';
 import {
   Menu,
@@ -13,6 +13,8 @@ import {
 import Banner from 'static/images/banner.png';
 import GroupBand from './Group';
 import useStyles from './styles';
+
+const NUMBER_OF_RESULTS = 10;
 
 const ARTISTS_QUERY = gql`
   query Artists($skipIdx: Int, $bandGroup: BandGroup) {
@@ -35,10 +37,13 @@ const ARTISTS_QUERY = gql`
 function Artist() {
   const classes = useStyles();
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const groupId = searchParams.get('group_key');
-  const total = useRef(100);
+  const pageId = searchParams.get('page_id');
   const [artists, setArtists] = useState([]);
   const [getArtists, { data, loading }] = useLazyQuery(ARTISTS_QUERY);
+
+  const totalPage = Math.floor(artists.length / NUMBER_OF_RESULTS) + 1;
 
   useEffect(() => {
     if (Boolean(groupId)) {
@@ -58,20 +63,19 @@ function Artist() {
 
   useEffect(() => {
     if (data?.artists.length) {
-      const newArtists = [...artists, ...data.artists];
-      setArtists(newArtists);
+      setArtists(data.artists);
     }
-    if (data?.artists.length === 100 && groupId) {
-      getArtists({
-        variables: {
-          skipIdx: total.current,
-          bandGroup: groupId,
-        },
-      });
-      total.current = total.current + 100;
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data?.artists, groupId]);
+  }, [data?.artists]);
+
+  const handleChangePage = (_, page) => {
+    navigate(`/artists/?group_key=${groupId}&page_id=${page}`);
+  };
+
+  const currentList = useMemo(() => {
+    const end = Number(pageId) * NUMBER_OF_RESULTS;
+    const start = end - NUMBER_OF_RESULTS;
+    return artists.slice(start, end);
+  }, [artists, pageId]);
 
   return (
     <Container maxWidth="lg">
@@ -87,10 +91,10 @@ function Artist() {
         ) : (
           <>
             {loading && <SkeletonLoading length={4} />}
-            {!loading && !data?.artists?.length && <p>No data found!!!</p>}
+            {!loading && !artists.length && <p>No data found!!!</p>}
             {!loading &&
-              data?.artists &&
-              data?.artists.map((artist) => (
+              Boolean(currentList.length) &&
+              currentList.map((artist) => (
                 <div className={classes.wrapper} key={artist.id}>
                   <img
                     alt="not found"
@@ -110,6 +114,15 @@ function Artist() {
                   </div>
                 </div>
               ))}
+            {!loading && totalPage > 1 && (
+              <div className={classes.paginationWrapper}>
+                <Pagination
+                  count={totalPage}
+                  color="primary"
+                  onChange={handleChangePage}
+                />
+              </div>
+            )}
           </>
         )}
       </div>

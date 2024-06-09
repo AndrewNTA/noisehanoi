@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ImgGr1T1 from 'static/images/avatar_gr1_1.jpg';
 import ImgGr1T2 from 'static/images/avatar_gr1_2.jpg';
-import ImgGr1T3 from 'static/images/avatar_gr1_3.jpg';
+import ImgGr1T3 from 'static/images/avatar_gr1_3.jpeg';
 
 import ImgGr2T1 from 'static/images/avatar_gr2_1.jpg';
 import ImgGr2T2 from 'static/images/avatar_gr2_2.jpg';
@@ -12,8 +12,8 @@ import ImgGr3T1 from 'static/images/avatar_gr3_1.jpg';
 import ImgGr3T2 from 'static/images/avatar_gr3_2.jpg';
 import ImgGr3T3 from 'static/images/avatar_gr3_3.jpg';
 
-import ImgGr4T1 from 'static/images/avatar_gr4_1.jpg';
-import ImgGr4T2 from 'static/images/avatar_gr4_2.jpg';
+import ImgGr4T1 from 'static/images/avatar_gr4_1.jpeg';
+import ImgGr4T2 from 'static/images/avatar_gr4_2.jpeg';
 import ImgGr4T3 from 'static/images/avatar_gr4_3.jpg';
 
 import ImgGr5T1 from 'static/images/avatar_gr5_1.jpg';
@@ -65,7 +65,7 @@ function Group() {
   const classes = useStyles();
   const navigate = useNavigate();
   const goToGroupDetail = (id) => {
-    navigate(`/artists/?group_key=${id}`);
+    navigate(`/artists/?group_key=${id}&page_id=1`);
   };
 
   const renderImg = (src) => (
@@ -74,6 +74,7 @@ function Group() {
 
   const renderItem = (item) => (
     <div
+      key={item.id}
       className={classes.groupBandBox}
       onClick={() => goToGroupDetail(item.id)}
     >
