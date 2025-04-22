@@ -2,6 +2,7 @@
 
 import InfoIcon from '@mui/icons-material/Info'
 import { formatPrice, formatDisplayTime } from '../utils'
+import useStyles from './styles'
 
 export default function Event({
   eventName,
@@ -14,47 +15,48 @@ export default function Event({
   facebookLink,
   preSalePrice,
 }) {
+  const classes = useStyles()
   const preSalePriceDisplay = preSalePrice
     ? `- ${formatPrice(preSalePrice)} vnd ticket presale`
     : ''
   return (
-    <div className="event-wrapper">
-      <div className="event-name">{eventName}</div>
-      <div className="event-extra-info">{extraInfo}</div>
-      <div className="event-info">
-        <div className="event-time">{formatDisplayTime(time)}</div>
+    <div className={classes.eventWrapper}>
+      <div className={classes.eventName}>{eventName}</div>
+      <div className={classes.eventExtraInfo}>{extraInfo}</div>
+      <div className={classes.eventInfo}>
+        <div className={classes.eventTime}>{formatDisplayTime(time)}</div>
         {venueLink ? (
           <a
             href={venueLink}
             target="_blank"
             rel="noreferrer"
-            className="event-venue-link"
+            className={classes.eventVenueLink}
           >
             {venueName}
           </a>
         ) : (
-          <div className="event-venue">{venueName}</div>
+          <div className={classes.eventVenue}>{venueName}</div>
         )}
       </div>
-      <div className="event-row">
-        <div className="event-more-info">
+      <div className={classes.eventRow}>
+        <div className={classes.eventMoreInfo}>
           <InfoIcon fontSize="small" sx={{ marginRight: '4px' }} />
           <a
             href={facebookLink}
             target="_blank"
             rel="noreferrer"
-            className="event-more-info-text"
+            className={classes.eventMoreInfoText}
           >
             More info
           </a>
         </div>
-        <div className="event-price">{`${formatPrice(
+        <div className={classes.eventPrice}>{`${formatPrice(
           price
         )} vnd ${preSalePriceDisplay}`}</div>
       </div>
       {optionalInfo && (
-        <div className="event-optional">
-          <div className="event-optional-icon">NB:</div>
+        <div className={classes.eventOptional}>
+          <div className={classes.eventOptionalIcon}>NB:</div>
           <span>{optionalInfo}</span>
         </div>
       )}

@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
+import useStyles from './styles'
 
 export default function ScrollTopBtn() {
+  const classes = useStyles()
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -34,7 +36,7 @@ export default function ScrollTopBtn() {
   }
 
   return (
-    <div className="scroll-top-btn" onClick={scrollToTop}>
+    <div className={classes.stbWrapper} onClick={scrollToTop}>
       <KeyboardArrowUpIcon />
     </div>
   )

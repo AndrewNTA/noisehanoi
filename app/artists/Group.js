@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import useStyles from './styles';
 
 import ImgGr1T1 from '../static/images/avatar_gr1_1.jpg';
 import ImgGr1T2 from '../static/images/avatar_gr1_2.jpg';
@@ -64,36 +65,33 @@ const groupList = [
 ];
 
 export default function Group() {
-  const router = useRouter()
+  const router = useRouter();
+  const classes = useStyles();
 
   const goToGroupDetail = (id) => {
-    router.push(`/artists/?group_key=${id}&page_id=1`)
+    router.push(`/artists/?group_key=${id}&page_id=1`);
   }
 
   const renderImg = (src) => (
-    <Image
-      key={src}
-      src={src}
-      alt="group"
-      width={200}
-      height={200}
-      className="group-image"
-    />
-  )
+    <Image src={src} alt="not found" className={classes.groupBandImg} />
+  );
 
   const renderItem = (item) => (
-    <div key={item.id} className="group-item">
-      <div className="group-images">
-        {item.images.map(renderImg)}
-      </div>
-      <div
-        className="group-title"
-        onClick={() => goToGroupDetail(item.id)}
-      >
-        {item.title}
+    <div
+      key={item.id}
+      className={classes.groupBandBox}
+      onClick={() => goToGroupDetail(item.id)}
+    >
+      <p className={classes.groupBandTitle}>{item.title}</p>
+      <div className={classes.groupBandImagesContainer}>
+        {item.images.map((src) => renderImg(src))}
       </div>
     </div>
-  )
+  );
 
-  return <div className="group-list">{groupList.map(renderItem)}</div>
+  return (
+    <div className={classes.groupBandContainer}>
+      {groupList.map((item) => renderItem(item))}
+    </div>
+  );
 } 

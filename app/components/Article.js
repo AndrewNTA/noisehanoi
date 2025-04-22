@@ -2,9 +2,11 @@
 
 import { useRouter } from 'next/navigation'
 import Spacing from './Spacing'
+import useStyles from './styles'
 
 export default function Article({ title, content, id }) {
   const router = useRouter()
+  const classes = useStyles()
 
   const goToReadDetail = () => {
     router.push(`/reads/${id}`)
@@ -12,10 +14,10 @@ export default function Article({ title, content, id }) {
 
   return (
     <div id={id}>
-      <div className="article-title" onClick={goToReadDetail}>
+      <div className={classes.aTitle} onClick={goToReadDetail}>
         {title}
       </div>
-      <div className="article-content">{content}</div>
+      <div className={classes.aContent}>{content}</div>
       <Spacing size={32} />
     </div>
   )

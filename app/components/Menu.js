@@ -2,32 +2,35 @@
 
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import Logo from '../static/images/logo.png'
+import useStyles from './styles'
 
 export default function Menu() {
   const router = useRouter()
+  const classes = useStyles()
 
   return (
-    <div className="menu-wrapper">
-      <div className="menu-logo-wrapper" onClick={() => router.push('/')}>
+    <div className={classes.menuWrapper}>
+      <div className={classes.menuLogoWrapper} onClick={() => router.push('/')}>
         <Image 
-          src="/images/logo.png" 
+          src={Logo}
           alt="noisehanoi" 
-          className="menu-logo"
+          className={classes.menuLogo}
           width={40}
           height={40}
         />
       </div>
-      <div className="menu-item-group">
-        <div className="menu-item" onClick={() => router.push('/gigs')}>
+      <div className={classes.menuItemGroup}>
+        <div className={classes.menuItem} onClick={() => router.push('/gigs')}>
           Gigs
         </div>
-        <div className="menu-item" onClick={() => router.push('/reads')}>
+        <div className={classes.menuItem} onClick={() => router.push('/reads')}>
           Reads
         </div>
-        <div className="menu-item" onClick={() => router.push('/places')}>
+        <div className={classes.menuItem} onClick={() => router.push('/places')}>
           Places
         </div>
-        <div className="menu-item" onClick={() => router.push('/artists')}>
+        <div className={classes.menuItem} onClick={() => router.push('/artists')}>
           Artists
         </div>
       </div>

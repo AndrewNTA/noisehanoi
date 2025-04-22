@@ -1,30 +1,33 @@
-'use client'
+'use client';
 
-import { Container, Grid } from '@mui/material'
-import { useQuery, gql } from '@apollo/client'
-import ImageGallery from 'react-image-gallery'
-import Spacing from './components/Spacing'
-import Article from './components/Article'
-import Menu from './components/Menu'
-import Event from './components/Event'
-import MoreButton from './components/MoreButton'
-import Footer from './components/Footer'
-import ScrollTopBtn from './components/ScrollTopBtn'
-import SpotifyIframe from './components/SpotifyIframe'
-import SkeletonLoading from './components/SkeletonLoading'
-import MetaTags from './components/MetaTags'
-import { months } from './constants'
-import { genEndDate, genStartDate, groupEventsByDate } from './utils'
-import { useRouter } from 'next/navigation'
-import { useCallback, useMemo, useEffect } from 'react'
+import { useRouter } from 'next/navigation';
+import { useCallback, useMemo, useEffect } from 'react';
+import { Container, Grid } from '@mui/material';
+import { useQuery, gql } from '@apollo/client';
+import ImageGallery from 'react-image-gallery';
+import {
+  Spacing,
+  Article,
+  Menu,
+  Event,
+  MoreButton,
+  Footer,
+  ScrollTopBtn,
+  SpotifyIframe,
+  SkeletonLoading,
+  MetaTags,
+} from './components';
+import { months } from './constants';
+import { genEndDate, genStartDate, groupEventsByDate } from './utils';
+import useStyles from './styles';
 
 const genImages = (arr) => {
-  if (!arr || arr.length === 0) return null
+  if (!arr || arr.length === 0) return null;
   return arr.map((a) => ({
     original: a?.image?.url,
     thumbnail: a?.image?.url,
-  }))
-}
+  }));
+};
 
 const BANNERS_QUERY = gql`
   query Banners {
@@ -39,7 +42,7 @@ const BANNERS_QUERY = gql`
       }
     }
   }
-`
+`;
 
 const ARTICLES_QUERY = gql`
   query Articles {
@@ -49,7 +52,7 @@ const ARTICLES_QUERY = gql`
       name
     }
   }
-`
+`;
 
 const EVENTS_QUERY = gql`
   query Events($start: DateTime, $end: DateTime) {
@@ -70,41 +73,43 @@ const EVENTS_QUERY = gql`
       facebookLink
     }
   }
-`
+`;
 
 export default function Home() {
-  const router = useRouter()
-  const { data: bannerData } = useQuery(BANNERS_QUERY)
-  const { data: articleData, loading: articleLoading } = useQuery(ARTICLES_QUERY)
-  const startOfDate = useMemo(genStartDate, [])
-  const endOfDate = useMemo(genEndDate, [])
+  const router = useRouter();
+  const classes = useStyles();
+  const { data: bannerData } = useQuery(BANNERS_QUERY);
+  const { data: articleData, loading: articleLoading } =
+    useQuery(ARTICLES_QUERY);
+  const startOfDate = useMemo(genStartDate, []);
+  const endOfDate = useMemo(genEndDate, []);
   const { data: eventData, loading: eventLoading } = useQuery(EVENTS_QUERY, {
     variables: {
       start: startOfDate,
       end: endOfDate,
     },
-  })
+  });
 
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
-    })
-  }, [])
+    });
+  }, []);
 
-  const groupedEvents = groupEventsByDate(eventData?.events)
-  const articleList = articleData?.articles ?? null
-  const keys = groupedEvents ? Object.keys(groupedEvents) : []
+  const groupedEvents = groupEventsByDate(eventData?.events);
+  const articleList = articleData?.articles ?? null;
+  const keys = groupedEvents ? Object.keys(groupedEvents) : [];
   const getCurrentDate = useCallback(() => {
-    const now = new Date()
-    return now.getDate()
-  }, [])
+    const now = new Date();
+    return now.getDate();
+  }, []);
 
-  const currentDate = useMemo(getCurrentDate, [getCurrentDate])
+  const currentDate = useMemo(getCurrentDate, [getCurrentDate]);
   const bannerList = useMemo(
     () => genImages(bannerData && bannerData.banners),
     [bannerData]
-  )
+  );
 
   return (
     <Container maxWidth="lg">
@@ -119,29 +124,30 @@ export default function Home() {
           slideInterval={8000}
           showPlayButton={false}
           showFullscreenButton={false}
+          additionalClass={classes.imageGallery}
         />
       )}
-      <div className="main">
+      <div className={classes.main}>
         <Spacing size={32} />
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
-            <h1 className="title">LIVE MUSIC THIS WEEK</h1>
+            <h1 className={classes.title}>LIVE MUSIC THIS WEEK</h1>
             {eventLoading && <SkeletonLoading length={4} />}
-            <div className="content">
+            <div className={classes.content}>
               {keys.map((k) => {
-                const eventList = groupedEvents[k] ?? null
-                const day = eventList?.[0]?.day
-                const [month, date] = k.split('-')
+                const eventList = groupedEvents[k] ?? null;
+                const day = eventList?.[0]?.day;
+                const [month, date] = k.split('-');
                 const label =
                   parseInt(date) === currentDate
                     ? 'today'
                     : parseInt(date) === currentDate + 1
                     ? 'tomorrow'
-                    : day
+                    : day;
                 return (
                   <div key={k}>
-                    <div className="event-date">
-                      <span className="event-label">{label}</span>
+                    <div className={classes.eventDate}>
+                      <span className={classes.eventLabel}>{label}</span>
                       {`${date} ${months[month]}`}
                     </div>
                     {eventList &&
@@ -160,17 +166,20 @@ export default function Home() {
                         />
                       ))}
                   </div>
-                )
+                );
               })}
-              <MoreButton text="more gigs" onClick={() => router.push('/gigs')} />
+              <MoreButton
+                text="more gigs"
+                onClick={() => router.push('/gigs')}
+              />
             </div>
           </Grid>
           <Grid item xs={12} md={6}>
-            <h1 className="title">LATEST READS</h1>
+            <h1 className={classes.title}>LATEST READS</h1>
             <Spacing size={16} />
             {articleLoading && <SkeletonLoading length={4} />}
             {!articleLoading && articleList && (
-              <div className="content">
+              <div className={classes.content}>
                 {articleList.map((a) => (
                   <Article
                     key={a.id}
@@ -190,15 +199,15 @@ export default function Home() {
         <Spacing size={64} />
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
-            <h1 className="title">WELCOME TO NOISE HANOI!</h1>
-            <div className="content">
-              <div className="left-spacing">
+            <h1 className={classes.title}>WELCOME TO NOISE HANOI!</h1>
+            <div className={classes.content}>
+              <div className={classes.leftSpacing}>
                 <b>
                   This site exists to promote the community that music creates
                 </b>
               </div>
               <Spacing size={24} />
-              <div className="left-spacing">
+              <div className={classes.leftSpacing}>
                 At its heart is a simple, no-nonsense gig guide that does
                 exactly what it says on the tin. We'll also try to publish a bit
                 of writing, gig reviews, music reviews and opinion pieces and
@@ -208,7 +217,7 @@ export default function Home() {
             </div>
           </Grid>
           <Grid item xs={12} md={6}>
-            <h1 className="title">NOISE HANOI PLAYLIST</h1>
+            <h1 className={classes.title}>NOISE HANOI PLAYLIST</h1>
             <SpotifyIframe />
           </Grid>
         </Grid>
@@ -216,5 +225,5 @@ export default function Home() {
       <Footer />
       <ScrollTopBtn />
     </Container>
-  )
-} 
+  );
+}

@@ -1,18 +1,35 @@
-'use client'
+'use client';
 
-import { Container, Grid } from '@mui/material'
-import { useQuery, gql } from '@apollo/client'
-import Menu from '../components/Menu'
-import Event from '../components/Event'
-import SkeletonLoading from '../components/SkeletonLoading'
-import MetaTags from '../components/MetaTags'
-import { months } from '../constants'
-import { genEndDate, genStartDate, groupEventsByDate } from '../utils'
-import { useCallback, useMemo, useEffect } from 'react'
+import { useMemo, useEffect, useState } from 'react';
+import { Container, Grid } from '@mui/material';
+import { useLazyQuery, gql } from '@apollo/client';
+import Image from 'next/image';
+import {
+  Menu,
+  Footer,
+  Spacing,
+  GigItem,
+  ScrollTopBtn,
+  SpotifyIframe,
+  SkeletonLoading,
+  MetaTags,
+} from '../components';
+import Banner from '../static/images/banner.png';
+import {
+  genOneYearQuery,
+  genStartDate,
+  groupEventsByDate,
+  groupEventsByMonth,
+} from '../utils';
+import useStyles from './styles';
 
 const EVENTS_QUERY = gql`
   query Events($start: DateTime, $end: DateTime) {
-    events(where: { time_gte: $start, time_lte: $end }, orderBy: time_ASC) {
+    events(
+      first: 100
+      orderBy: time_ASC
+      where: { time_gte: $start, time_lte: $end }
+    ) {
       id
       extraInfo
       eventName
@@ -25,78 +42,117 @@ const EVENTS_QUERY = gql`
       facebookLink
     }
   }
-`
+`;
 
 export default function Gigs() {
-  const startOfDate = useMemo(genStartDate, [])
-  const endOfDate = useMemo(genEndDate, [])
-  const { data: eventData, loading: eventLoading } = useQuery(EVENTS_QUERY, {
-    variables: {
-      start: startOfDate,
-      end: endOfDate,
-    },
-  })
+  const classes = useStyles();
+  const [events, setEvents] = useState([]);
+  const startOfDate = useMemo(genStartDate, []);
+  const endOfDate = useMemo(genOneYearQuery, []);
+  const [getEvents, { data, loading }] = useLazyQuery(EVENTS_QUERY);
 
   useEffect(() => {
+    getEvents({
+      variables: {
+        start: startOfDate,
+        end: endOfDate,
+      },
+    });
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
-    })
-  }, [])
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const groupedEvents = groupEventsByDate(eventData?.events)
-  const keys = groupedEvents ? Object.keys(groupedEvents) : []
-  const getCurrentDate = useCallback(() => {
-    const now = new Date()
-    return now.getDate()
-  }, [])
+  useEffect(() => {
+    if (data?.events.length) {
+      const newEvents = [...events, ...data.events];
+      setEvents(newEvents);
+    }
+    if (data?.events.length === 100) {
+      const lastItem = data.events[99];
+      getEvents({
+        variables: {
+          start: lastItem.time,
+          end: endOfDate,
+        },
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data?.events]);
 
-  const currentDate = useMemo(getCurrentDate, [getCurrentDate])
+  const groupedEventsByMonth = groupEventsByMonth(events);
+  const monthKeys = groupedEventsByMonth
+    ? Object.keys(groupedEventsByMonth)
+    : [];
+
+  const isLoading = loading && !events.length;
 
   return (
     <Container maxWidth="lg">
-      <MetaTags title="Gigs - Noise Hanoi" />
+      <MetaTags />
       <Menu />
-      <div className="main">
-        <h1 className="title">LIVE MUSIC THIS MONTH</h1>
-        {eventLoading && <SkeletonLoading length={4} />}
-        <div className="content">
-          {keys.map((k) => {
-            const eventList = groupedEvents[k] ?? null
-            const day = eventList?.[0]?.day
-            const [month, date] = k.split('-')
-            const label =
-              parseInt(date) === currentDate
-                ? 'today'
-                : parseInt(date) === currentDate + 1
-                ? 'tomorrow'
-                : day
-            return (
-              <div key={k}>
-                <div className="event-date">
-                  <span className="event-label">{label}</span>
-                  {`${date} ${months[month]}`}
+      <Image src={Banner} alt="bg" className={classes.bg} />
+      <Spacing size={48} />
+      <Grid
+        container
+        columnSpacing={{ xs: 2, sm: 2, md: 12 }}
+        className={classes.main}
+      >
+        <Grid item xs={12} sm={8}>
+          {isLoading && <SkeletonLoading length={4} />}
+          {!isLoading &&
+            groupedEventsByMonth &&
+            monthKeys.map((time) => {
+              const groupedEvents = groupEventsByDate(
+                groupedEventsByMonth[time]
+              );
+              const keys = groupedEvents ? Object.keys(groupedEvents) : [];
+              return (
+                <div key={time}>
+                  <div className={classes.title}>{time}</div>
+                  <Spacing size={32} />
+                  {groupedEvents &&
+                    keys.map((k) => {
+                      const [, date] = k.split('-');
+                      const eventList = groupedEvents[k] ?? null;
+                      const day = eventList ? eventList[0]?.day : '';
+                      return (
+                        eventList && (
+                          <div key={`${date}-${day}`}>
+                            <GigItem day={day} date={date} events={eventList} />
+                            <Spacing size={32} />
+                          </div>
+                        )
+                      );
+                    })}
                 </div>
-                {eventList &&
-                  eventList.map((ev) => (
-                    <Event
-                      key={ev.id}
-                      eventName={ev.eventName}
-                      time={ev.time}
-                      venueLink={ev.venueLink}
-                      venueName={ev.venueName}
-                      facebookLink={ev.facebookLink}
-                      optionalInfo={ev.optionalInfo}
-                      extraInfo={ev.extraInfo}
-                      price={ev.price}
-                      preSalePrice={ev.preSalePrice}
-                    />
-                  ))}
-              </div>
-            )
-          })}
-        </div>
-      </div>
+              );
+            })}
+        </Grid>
+        <Grid item xs={12} sm={4} className={classes.section}>
+          <div className={classes.title}>NOISE HANOI PLAYLIST</div>
+          <Spacing size={32} />
+          <SpotifyIframe />
+          <Spacing size={32} />
+          <div className={classes.title}>ABOUT THE GUIDE</div>
+          <Spacing size={32} />
+          <div>
+            The aim is to keep this guide as simple as possible. If you have an
+            event you think should be listed here, hit the submit button below.
+          </div>
+          <a
+            href="mailto:noisehanoi@gmail.com"
+            className={classes.sendEmailBtn}
+          >
+            Send an Email
+          </a>
+          <Spacing size={16} />
+        </Grid>
+      </Grid>
+      <Footer />
+      <ScrollTopBtn />
     </Container>
-  )
-} 
+  );
+}

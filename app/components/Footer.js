@@ -1,42 +1,87 @@
 'use client'
 
-import { Container, Grid, Typography } from '@mui/material'
+import { Grid } from '@mui/material'
 import { useRouter } from 'next/navigation'
+import Spacing from './Spacing'
+import useStyles from './styles'
 
 export default function Footer() {
   const router = useRouter()
+  const classes = useStyles()
 
   return (
-    <footer className="footer">
-      <Container maxWidth="lg">
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={6}>
-            <Typography variant="body2" color="text.secondary">
-              © {new Date().getFullYear()} Noise Hanoi. All rights reserved.
-            </Typography>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <div className="footer-links">
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                onClick={() => router.push('/about')}
-                style={{ cursor: 'pointer' }}
+    <div className={classes.footerWrapper}>
+      <Grid container spacing={5}>
+        <Grid item xs={12} md={6}>
+          <div className={classes.footerLogo} onClick={() => navigate("/")}>
+            Noisehanoi
+          </div>
+          <Spacing size={32} />
+          <div>
+            Email: <b>noisehanoi@gmail.com</b>
+          </div>
+          <Spacing size={8} />
+          <div>
+            Instagram:{" "}
+            <a
+              className={classes.footerLink}
+              href={"https://www.instagram.com/noisehanoi/"}
+              target="_blank"
+              rel="noreferrer"
+            >
+              @noisehanoi
+            </a>
+          </div>
+          <Spacing size={8} />
+          <div>
+            Facebook:{" "}
+            <a
+              className={classes.footerLink}
+              href={"https://www.facebook.com/noisehanoi/"}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Noise Hanoi
+            </a>
+          </div>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <div className={classes.footerTitle}>Navigation</div>
+          <Grid container spacing={2}>
+            <Grid item xs={6} md={6}>
+              <div className={classes.footerItem} onClick={() => router.push("/")}>
+                Home
+              </div>
+              <div
+                className={classes.footerItem}
+                onClick={() => router.push("/gigs")}
               >
-                About
-              </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                onClick={() => router.push('/contact')}
-                style={{ cursor: 'pointer' }}
+                Gigs
+              </div>
+            </Grid>
+            <Grid item xs={6} md={6}>
+              <div
+                className={classes.footerItem}
+                onClick={() => router.push("/reads")}
               >
-                Contact
-              </Typography>
-            </div>
+                Reads
+              </div>
+              <div
+                className={classes.footerItem}
+                onClick={() => router.push("/places")}
+              >
+                Places
+              </div>
+              <div
+                className={classes.footerItem}
+                onClick={() => router.push("/artists")}
+              >
+                Artists
+              </div>
+            </Grid>
           </Grid>
         </Grid>
-      </Container>
-    </footer>
+      </Grid>
+    </div>
   )
 } 

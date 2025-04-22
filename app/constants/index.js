@@ -1,21 +1,22 @@
-export const months = {
-  0: 'January',
-  1: 'February',
-  2: 'March',
-  3: 'April',
-  4: 'May',
-  5: 'June',
-  6: 'July',
-  7: 'August',
-  8: 'September',
-  9: 'October',
-  10: 'November',
-  11: 'December',
-}
+export const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
 
-export const VENUE = 'VENUE'
-export const PROMOTER = 'PROMOTER'
-export const RECORD_STORE = 'RECORD_STORE'
-export const REHEARSAL_SPACE = 'REHEARSAL_SPACE'
-export const COMMUNITY = 'COMMUNITY'
-export const BLOG = 'BLOG' 
+// Group link type
+export const BLOG = "blog";
+export const RECORD_STORE = "record_store";
+export const VENUE = "venue";
+export const PROMOTER = "promoter";
+export const REHEARSAL_SPACE = "rehearsal_space";
+export const COMMUNITY = "community";
