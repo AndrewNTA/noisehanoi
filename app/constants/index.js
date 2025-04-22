@@ -1,0 +1,21 @@
+export const months = {
+  0: 'January',
+  1: 'February',
+  2: 'March',
+  3: 'April',
+  4: 'May',
+  5: 'June',
+  6: 'July',
+  7: 'August',
+  8: 'September',
+  9: 'October',
+  10: 'November',
+  11: 'December',
+}
+
+export const VENUE = 'VENUE'
+export const PROMOTER = 'PROMOTER'
+export const RECORD_STORE = 'RECORD_STORE'
+export const REHEARSAL_SPACE = 'REHEARSAL_SPACE'
+export const COMMUNITY = 'COMMUNITY'
+export const BLOG = 'BLOG' 
