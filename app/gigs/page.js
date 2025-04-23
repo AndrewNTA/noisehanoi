@@ -12,7 +12,6 @@ import {
   ScrollTopBtn,
   SpotifyIframe,
   SkeletonLoading,
-  MetaTags,
 } from '../components';
 import Banner from '../static/images/banner.png';
 import {
@@ -91,7 +90,6 @@ export default function Gigs() {
 
   return (
     <Container maxWidth="lg">
-      <MetaTags />
       <Menu />
       <Image src={Banner} alt="bg" className={classes.bg} />
       <Spacing size={48} />

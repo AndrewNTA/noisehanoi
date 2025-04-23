@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import Image from 'next/image';
 import { Container } from '@mui/material';
 import { useQuery, gql } from '@apollo/client';
-import { Menu, Footer, Spacing, ScrollTopBtn, SkeletonLoading, Article, MetaTags } from '../components';
+import { Menu, Footer, Spacing, ScrollTopBtn, SkeletonLoading, Article } from '../components';
 import Banner from '../static/images/banner.png';
 import useStyles from './styles';
 
@@ -33,7 +33,6 @@ export default function Reads() {
 
   return (
     <Container maxWidth="lg">
-      <MetaTags />
       <Menu />
       <Image src={Banner} alt="bg" className={classes.bg} />
       <Spacing size={48} />

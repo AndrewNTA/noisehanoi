@@ -15,7 +15,6 @@ import {
   ScrollTopBtn,
   SpotifyIframe,
   SkeletonLoading,
-  MetaTags,
 } from './components';
 import { months } from './constants';
 import { genEndDate, genStartDate, groupEventsByDate } from './utils';
@@ -113,7 +112,6 @@ export default function Home() {
 
   return (
     <Container maxWidth="lg">
-      <MetaTags />
       <Menu />
       {bannerList && (
         <ImageGallery

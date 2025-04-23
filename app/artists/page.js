@@ -9,7 +9,6 @@ import Footer from '../components/Footer';
 import Spacing from '../components/Spacing';
 import ScrollTopBtn from '../components/ScrollTopBtn';
 import SkeletonLoading from '../components/SkeletonLoading';
-import MetaTags from '../components/MetaTags';
 import Image from 'next/image';
 import Banner from '../static/images/banner.png';
 import GroupBand from './Group';
@@ -80,7 +79,6 @@ export default function Artists() {
 
   return (
     <Container maxWidth="lg">
-      <MetaTags />
       <Menu />
       <Image src={Banner} alt="bg" className={classes.bg} />
       <Spacing size={24} />

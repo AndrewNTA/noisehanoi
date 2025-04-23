@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useEffect, useMemo } from 'react';
 import { Container, Grid, Skeleton, Typography } from '@mui/material';
@@ -12,7 +12,6 @@ import {
   Spacing,
   ScrollTopBtn,
   SkeletonReadLoading,
-  MetaTags,
 } from '../../components';
 import { formatDisplayFullDate, genKeyWords } from '../../utils';
 import useStyles from './styles';
@@ -87,11 +86,6 @@ function ReadDetail() {
   }
   return (
     <Container maxWidth="lg">
-      <MetaTags
-        keyWords={keyWords}
-        title={articleData?.name}
-        desc={articleData?.brief}
-      />
       <Menu />
       <Spacing size={48} />
       <div className={classes.main}>

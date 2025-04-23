@@ -9,7 +9,6 @@ import {
   Spacing,
   ScrollTopBtn,
   SkeletonLoading,
-  MetaTags,
 } from '../components';
 import { groupPlaces, mapPlaceGroupDisplay } from '../utils';
 import Image from 'next/image';
@@ -68,7 +67,6 @@ export default function Places() {
 
   return (
     <Container maxWidth="lg">
-      <MetaTags />
       <Menu />
       <Image src={Banner} alt="bg" className={classes.bg} />
       <Spacing size={24} />
