@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google'
 import { ApolloProviderWrapper } from './providers/apollo-provider'
 import { Providers } from './providers'
+import { ThemeProvider } from './providers/theme-provider'
 import Script from 'next/script'
 import './globals.css'
 
@@ -45,11 +46,13 @@ export default function RootLayout({ children }) {
           <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M94C483Q"
             height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe>
         </noscript>
-        <ApolloProviderWrapper>
-          <Providers>
-            {children}
-          </Providers>
-        </ApolloProviderWrapper>
+        <ThemeProvider>
+          <ApolloProviderWrapper>
+            <Providers>
+              {children}
+            </Providers>
+          </ApolloProviderWrapper>
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -21,66 +21,6 @@ const useStyles = makeStyles((theme) => ({
   },
   // article end
 
-  // menu start
-  menuWrapper: {
-    display: "flex",
-    alignItems: "center",
-    paddingBottom: "12px",
-    paddingTop: "4rem",
-    [theme.breakpoints.down("sm")]: {
-      display: "block",
-      paddingTop: "12px",
-    },
-  },
-  menuItemGroup: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    flex: 1,
-  },
-  menuItem: {
-    cursor: "pointer",
-    fontSize: "1.375rem",
-    textTransform: "uppercase",
-    padding: "4px 2rem",
-    width: "6rem",
-    fontWeight: 600,
-    borderBottom: "2px solid black",
-    textAlign: "center",
-    "&:hover": {
-      color: "#1EBDD3",
-      borderBottom: "2px solid #1EBDD3",
-    },
-    [theme.breakpoints.down("md")]: {
-      padding: "4px 1.25rem",
-      width: "4rem",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "1.125rem",
-      lineHeight: "1.75rem",
-      width: "unset",
-      padding: "4px 0",
-    },
-  },
-  menuLogoWrapper: {
-    [theme.breakpoints.down("sm")]: {
-      textAlign: "center",
-    },
-  },
-  menuLogo: {
-    width: "50px",
-    height: "50px",
-    cursor: "pointer",
-    paddingRight: "5rem",
-    paddingLeft: "5rem",
-    [theme.breakpoints.down("sm")]: {
-      paddingRight: 0,
-      paddingLeft: 0,
-      paddingBottom: "1rem",
-    },
-  },
-  // menu end
-
   // event start
   eventWrapper: {
     marginBottom: "16px",
@@ -180,63 +120,6 @@ const useStyles = makeStyles((theme) => ({
     fontStyle: "italic",
   },
   // event end
-
-  // more button start
-  mbWrapper: {
-    padding: "8px 12px",
-    borderRadius: "4px",
-    border: "2px solid #ffffff",
-    cursor: "pointer",
-    marginTop: "20px",
-    fontSize: "1.125rem",
-    lineHeight: "1.25rem",
-    fontWeight: 600,
-    display: "flex",
-    alignItems: "center",
-    textTransform: "uppercase",
-    "&:hover": {
-      border: "2px solid #1EBDD3",
-      color: "#1EBDD3",
-    },
-  },
-  // more button end
-
-  // footer start
-  footerWrapper: {
-    color: "#000000",
-    backgroundColor: "#ffffff",
-    padding: "3.5rem 2.5rem",
-    marginTop: "4rem",
-    fontSize: "0.875rem",
-  },
-  footerLogo: {
-    cursor: "pointer",
-    fontSize: "2.5rem",
-    lineHeight: "1.75rem",
-    fontWeight: 700,
-    textTransform: "uppercase",
-  },
-  footerLink: {
-    color: "black",
-    fontWeight: 500,
-    marginLeft: "3px",
-    "&:hover": {
-      textDecorationLine: "underline",
-    },
-  },
-  footerTitle: {
-    fontSize: "1.5rem",
-    lineHeight: "1.75rem",
-    fontWeight: 600,
-    marginBottom: "2rem",
-  },
-  footerItem: {
-    color: "black",
-    fontWeight: 400,
-    marginBottom: "12px",
-    cursor: "pointer",
-  },
-  // footer end
 
   // gig item start
   giWrapper: {

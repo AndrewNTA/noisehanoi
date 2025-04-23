@@ -2,20 +2,58 @@
 
 import { Grid } from '@mui/material'
 import { useRouter } from 'next/navigation'
+import { styled } from '@mui/material/styles'
 import Spacing from './Spacing'
-import useStyles from './styles'
+
+const FooterWrapper = styled('div')({
+  color: '#000000',
+  backgroundColor: '#ffffff',
+  padding: '3.5rem 2.5rem',
+  marginTop: '4rem',
+  fontSize: '0.875rem',
+})
+
+const FooterLogo = styled('div')({
+  cursor: 'pointer',
+  fontSize: '2.5rem',
+  lineHeight: '1.75rem',
+  fontWeight: 700,
+  textTransform: 'uppercase',
+})
+
+const FooterLink = styled('a')({
+  color: 'black',
+  fontWeight: 500,
+  marginLeft: '3px',
+  '&:hover': {
+    textDecorationLine: 'underline',
+  },
+})
+
+const FooterTitle = styled('div')({
+  fontSize: '1.5rem',
+  lineHeight: '1.75rem',
+  fontWeight: 600,
+  marginBottom: '2rem',
+})
+
+const FooterItem = styled('div')({
+  color: 'black',
+  fontWeight: 400,
+  marginBottom: '12px',
+  cursor: 'pointer',
+})
 
 export default function Footer() {
   const router = useRouter()
-  const classes = useStyles()
 
   return (
-    <div className={classes.footerWrapper}>
+    <FooterWrapper>
       <Grid container spacing={5}>
         <Grid item xs={12} md={6}>
-          <div className={classes.footerLogo} onClick={() => navigate("/")}>
+          <FooterLogo onClick={() => router.push('/')}>
             Noisehanoi
-          </div>
+          </FooterLogo>
           <Spacing size={32} />
           <div>
             Email: <b>noisehanoi@gmail.com</b>
@@ -23,65 +61,51 @@ export default function Footer() {
           <Spacing size={8} />
           <div>
             Instagram:{" "}
-            <a
-              className={classes.footerLink}
-              href={"https://www.instagram.com/noisehanoi/"}
+            <FooterLink
+              href="https://www.instagram.com/noisehanoi/"
               target="_blank"
               rel="noreferrer"
             >
               @noisehanoi
-            </a>
+            </FooterLink>
           </div>
           <Spacing size={8} />
           <div>
             Facebook:{" "}
-            <a
-              className={classes.footerLink}
-              href={"https://www.facebook.com/noisehanoi/"}
+            <FooterLink
+              href="https://www.facebook.com/noisehanoi/"
               target="_blank"
               rel="noreferrer"
             >
               Noise Hanoi
-            </a>
+            </FooterLink>
           </div>
         </Grid>
         <Grid item xs={12} md={6}>
-          <div className={classes.footerTitle}>Navigation</div>
+          <FooterTitle>Navigation</FooterTitle>
           <Grid container spacing={2}>
             <Grid item xs={6} md={6}>
-              <div className={classes.footerItem} onClick={() => router.push("/")}>
+              <FooterItem onClick={() => router.push('/')}>
                 Home
-              </div>
-              <div
-                className={classes.footerItem}
-                onClick={() => router.push("/gigs")}
-              >
+              </FooterItem>
+              <FooterItem onClick={() => router.push('/gigs')}>
                 Gigs
-              </div>
+              </FooterItem>
             </Grid>
             <Grid item xs={6} md={6}>
-              <div
-                className={classes.footerItem}
-                onClick={() => router.push("/reads")}
-              >
+              <FooterItem onClick={() => router.push('/reads')}>
                 Reads
-              </div>
-              <div
-                className={classes.footerItem}
-                onClick={() => router.push("/places")}
-              >
+              </FooterItem>
+              <FooterItem onClick={() => router.push('/places')}>
                 Places
-              </div>
-              <div
-                className={classes.footerItem}
-                onClick={() => router.push("/artists")}
-              >
+              </FooterItem>
+              <FooterItem onClick={() => router.push('/artists')}>
                 Artists
-              </div>
+              </FooterItem>
             </Grid>
           </Grid>
         </Grid>
       </Grid>
-    </div>
+    </FooterWrapper>
   )
 } 
