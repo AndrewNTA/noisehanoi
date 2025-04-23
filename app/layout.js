@@ -8,8 +8,30 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Noise HaNoi',
-  description: 'live.music.HaNoi.',
+  title: 'Noise Hanoi - Live Music in Hanoi',
+  description: 'Discover live music events, gigs, and the latest reads about the Hanoi music scene.',
+  openGraph: {
+    title: 'Noise Hanoi - Live Music in Hanoi',
+    description: 'Discover live music events, gigs, and the latest reads about the Hanoi music scene.',
+    url: 'https://noisehanoi.com',
+    siteName: 'Noise Hanoi',
+    images: [
+      {
+        url: 'https://media.graphassets.com/g0u8F0NReulFIRCA4IKW',
+        width: 1200,
+        height: 630,
+        alt: 'Noise Hanoi',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Noise Hanoi - Live Music in Hanoi',
+    description: 'Discover live music events, gigs, and the latest reads about the Hanoi music scene.',
+    images: ['https://media.graphassets.com/g0u8F0NReulFIRCA4IKW'],
+  },
   keywords: 'Music, Events, Hanoi, Drums, Festival, Liveshow, Bia, Live, Coffee, Rock, Ho Chi Minh',
   icons: {
     icon: '/favicon.png',

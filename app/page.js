@@ -2,9 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 import { useCallback, useMemo, useEffect } from 'react';
-import { Container, Grid } from '@mui/material';
+import { Container, Grid, styled } from '@mui/material';
 import { useQuery, gql } from '@apollo/client';
-import ImageGallery from 'react-image-gallery';
 import {
   Spacing,
   Article,
@@ -15,33 +14,59 @@ import {
   ScrollTopBtn,
   SpotifyIframe,
   SkeletonLoading,
+  Banner
 } from './components';
 import { months } from './constants';
 import { genEndDate, genStartDate, groupEventsByDate } from './utils';
-import useStyles from './styles';
 
-const genImages = (arr) => {
-  if (!arr || arr.length === 0) return null;
-  return arr.map((a) => ({
-    original: a?.image?.url,
-    thumbnail: a?.image?.url,
-  }));
-};
+const Main = styled('div')(({ theme }) => ({
+  padding: '1.25rem',
+  color: 'white',
+  [theme.breakpoints.down('sm')]: {
+    padding: '1.25rem 0',
+  },
+}));
 
-const BANNERS_QUERY = gql`
-  query Banners {
-    banners(first: 5) {
-      id
-      image {
-        url(
-          transformation: {
-            image: { resize: { fit: clip, height: 2048, width: 682 } }
-          }
-        )
-      }
-    }
-  }
-`;
+const Title = styled('h1')({
+  padding: '0 0.75rem 0.5rem 0.5rem',
+  fontWeight: 600,
+  textTransform: 'uppercase',
+  lineHeight: '1.25rem',
+  borderBottom: '1px solid white',
+  fontSize: '1.375rem',
+});
+
+const EventDate = styled('div')({
+  textTransform: 'uppercase',
+  lineHeight: '1.25rem',
+  borderBottom: '1px solid white',
+  fontSize: '1.125rem',
+  color: '#CFCFCF',
+  paddingBottom: '4px',
+  fontWeight: 400,
+  marginTop: '2.5rem',
+  marginBottom: '1rem',
+});
+
+const EventLabel = styled('span')({
+  color: '#1EBDD3',
+  textTransform: 'uppercase',
+  lineHeight: '1.25rem',
+  fontSize: '1.125rem',
+  fontWeight: 700,
+  marginRight: '6px',
+});
+
+const Content = styled('div')(({ theme }) => ({
+  paddingRight: '8rem',
+  [theme.breakpoints.down('sm')]: {
+    paddingRight: '0',
+  },
+}));
+
+const LeftSpacing = styled('div')({
+  paddingLeft: '0.75rem',
+});
 
 const ARTICLES_QUERY = gql`
   query Articles {
@@ -76,10 +101,7 @@ const EVENTS_QUERY = gql`
 
 export default function Home() {
   const router = useRouter();
-  const classes = useStyles();
-  const { data: bannerData } = useQuery(BANNERS_QUERY);
-  const { data: articleData, loading: articleLoading } =
-    useQuery(ARTICLES_QUERY);
+  const { data: articleData, loading: articleLoading } = useQuery(ARTICLES_QUERY);
   const startOfDate = useMemo(genStartDate, []);
   const endOfDate = useMemo(genEndDate, []);
   const { data: eventData, loading: eventLoading } = useQuery(EVENTS_QUERY, {
@@ -105,33 +127,18 @@ export default function Home() {
   }, []);
 
   const currentDate = useMemo(getCurrentDate, [getCurrentDate]);
-  const bannerList = useMemo(
-    () => genImages(bannerData && bannerData.banners),
-    [bannerData]
-  );
 
   return (
     <Container maxWidth="lg">
       <Menu />
-      {bannerList && (
-        <ImageGallery
-          items={bannerList}
-          showThumbnails={false}
-          autoPlay={true}
-          slideDuration={1500}
-          slideInterval={8000}
-          showPlayButton={false}
-          showFullscreenButton={false}
-          additionalClass={classes.imageGallery}
-        />
-      )}
-      <div className={classes.main}>
+      <Banner />
+      <Main>
         <Spacing size={32} />
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
-            <h1 className={classes.title}>LIVE MUSIC THIS WEEK</h1>
+            <Title>LIVE MUSIC THIS WEEK</Title>
             {eventLoading && <SkeletonLoading length={4} />}
-            <div className={classes.content}>
+            <Content>
               {keys.map((k) => {
                 const eventList = groupedEvents[k] ?? null;
                 const day = eventList?.[0]?.day;
@@ -144,10 +151,10 @@ export default function Home() {
                     : day;
                 return (
                   <div key={k}>
-                    <div className={classes.eventDate}>
-                      <span className={classes.eventLabel}>{label}</span>
+                    <EventDate>
+                      <EventLabel>{label}</EventLabel>
                       {`${date} ${months[month]}`}
-                    </div>
+                    </EventDate>
                     {eventList &&
                       eventList.map((ev) => (
                         <Event
@@ -170,14 +177,14 @@ export default function Home() {
                 text="more gigs"
                 onClick={() => router.push('/gigs')}
               />
-            </div>
+            </Content>
           </Grid>
           <Grid item xs={12} md={6}>
-            <h1 className={classes.title}>LATEST READS</h1>
+            <Title>LATEST READS</Title>
             <Spacing size={16} />
             {articleLoading && <SkeletonLoading length={4} />}
             {!articleLoading && articleList && (
-              <div className={classes.content}>
+              <Content>
                 {articleList.map((a) => (
                   <Article
                     key={a.id}
@@ -190,36 +197,36 @@ export default function Home() {
                   text="more reads"
                   onClick={() => router.push('/reads')}
                 />
-              </div>
+              </Content>
             )}
           </Grid>
         </Grid>
         <Spacing size={64} />
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
-            <h1 className={classes.title}>WELCOME TO NOISE HANOI!</h1>
-            <div className={classes.content}>
-              <div className={classes.leftSpacing}>
+            <Title>WELCOME TO NOISE HANOI!</Title>
+            <Content>
+              <LeftSpacing>
                 <b>
                   This site exists to promote the community that music creates
                 </b>
-              </div>
+              </LeftSpacing>
               <Spacing size={24} />
-              <div className={classes.leftSpacing}>
+              <LeftSpacing>
                 At its heart is a simple, no-nonsense gig guide that does
                 exactly what it says on the tin. We&apos;ll also try to publish a bit
                 of writing, gig reviews, music reviews and opinion pieces and
                 the like. If you have an event that you would like to promote,
                 or an article you want published, send us an email!
-              </div>
-            </div>
+              </LeftSpacing>
+            </Content>
           </Grid>
           <Grid item xs={12} md={6}>
-            <h1 className={classes.title}>NOISE HANOI PLAYLIST</h1>
+            <Title>NOISE HANOI PLAYLIST</Title>
             <SpotifyIframe />
           </Grid>
         </Grid>
-      </div>
+      </Main>
       <Footer />
       <ScrollTopBtn />
     </Container>

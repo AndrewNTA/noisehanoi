@@ -1,7 +1,6 @@
 export { default as Article } from './Article'
 export { default as Event } from './Event'
 export { default as Footer } from './Footer'
-export { default as MetaTags } from './MetaTags'
 export { default as MoreButton } from './MoreButton'
 export { default as ScrollTopBtn } from './ScrollTopBtn'
 export { default as SkeletonLoading } from './SkeletonLoading'
