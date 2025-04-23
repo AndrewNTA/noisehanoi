@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useEffect, useState } from 'react';
-import { Container, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import { useLazyQuery, gql } from '@apollo/client';
 import {
   Menu,
@@ -19,7 +19,7 @@ import {
   groupEventsByDate,
   groupEventsByMonth,
 } from '../utils';
-import useStyles from './styles';
+import { MainContainer, MainGrid, Section, Title, SendEmailBtn } from './styles';
 
 const EVENTS_QUERY = gql`
   query Events($start: DateTime, $end: DateTime) {
@@ -43,7 +43,6 @@ const EVENTS_QUERY = gql`
 `;
 
 export default function Gigs() {
-  const classes = useStyles();
   const [events, setEvents] = useState([]);
   const startOfDate = useMemo(genStartDate, []);
   const endOfDate = useMemo(genOneYearQuery, []);
@@ -88,14 +87,13 @@ export default function Gigs() {
   const isLoading = loading && !events.length;
 
   return (
-    <Container maxWidth="lg">
+    <MainContainer>
       <Menu />
       <Banner />
       <Spacing size={48} />
-      <Grid
+      <MainGrid
         container
         columnSpacing={{ xs: 2, sm: 2, md: 12 }}
-        className={classes.main}
       >
         <Grid item xs={12} sm={8}>
           {isLoading && <SkeletonLoading length={4} />}
@@ -108,7 +106,7 @@ export default function Gigs() {
               const keys = groupedEvents ? Object.keys(groupedEvents) : [];
               return (
                 <div key={time}>
-                  <div className={classes.title}>{time}</div>
+                  <Title>{time}</Title>
                   <Spacing size={32} />
                   {groupedEvents &&
                     keys.map((k) => {
@@ -128,28 +126,25 @@ export default function Gigs() {
               );
             })}
         </Grid>
-        <Grid item xs={12} sm={4} className={classes.section}>
-          <div className={classes.title}>NOISE HANOI PLAYLIST</div>
+        <Grid item xs={12} sm={4}>
+          <Title>NOISE HANOI PLAYLIST</Title>
           <Spacing size={32} />
           <SpotifyIframe />
           <Spacing size={32} />
-          <div className={classes.title}>ABOUT THE GUIDE</div>
+          <Title>ABOUT THE GUIDE</Title>
           <Spacing size={32} />
-          <div>
+          <Section>
             The aim is to keep this guide as simple as possible. If you have an
             event you think should be listed here, hit the submit button below.
-          </div>
-          <a
-            href="mailto:noisehanoi@gmail.com"
-            className={classes.sendEmailBtn}
-          >
+          </Section>
+          <SendEmailBtn href="mailto:noisehanoi@gmail.com">
             Send an Email
-          </a>
+          </SendEmailBtn>
           <Spacing size={16} />
         </Grid>
-      </Grid>
+      </MainGrid>
       <Footer />
       <ScrollTopBtn />
-    </Container>
+    </MainContainer>
   );
 }
