@@ -11,7 +11,6 @@ import {
   Footer,
   ScrollTopBtn,
   SkeletonLoading,
-  MetaTags,
 } from '../components';
 import Image from 'next/image';
 import GroupBand from './Group';
@@ -82,7 +81,6 @@ function ArtistsContent() {
 
   return (
     <Container maxWidth="lg">
-      <MetaTags />
       <Menu />
       <Banner />
       <Spacing size={24} />
