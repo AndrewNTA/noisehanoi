@@ -16,11 +16,15 @@ export const metadata = {
     apple: '/logo192.png',
   },
   manifest: '/manifest.json',
-  themeColor: '#000000',
-  viewport: 'width=device-width, initial-scale=1',
   verification: {
     google: 'ZXOKCtk7cQLJjdU_Msk6v7kVMa-LJEZ2PZc4mDw9zsY',
   },
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#000000',
 }
 
 export default function RootLayout({ children }) {
