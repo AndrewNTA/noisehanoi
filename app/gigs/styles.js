@@ -1,11 +1,6 @@
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
-  bg: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-  },
   main: {
     padding: "0 1.5rem",
     [theme.breakpoints.down("sm")]: {

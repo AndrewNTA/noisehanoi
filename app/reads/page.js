@@ -1,11 +1,9 @@
 'use client';
 
 import { useEffect } from 'react';
-import Image from 'next/image';
 import { Container } from '@mui/material';
 import { useQuery, gql } from '@apollo/client';
-import { Menu, Footer, Spacing, ScrollTopBtn, SkeletonLoading, Article } from '../components';
-import Banner from '../static/images/banner.png';
+import { Menu, Footer, Spacing, ScrollTopBtn, SkeletonLoading, Article, Banner } from '../components';
 import useStyles from './styles';
 
 const ARTICLES_QUERY = gql`
@@ -34,7 +32,7 @@ export default function Reads() {
   return (
     <Container maxWidth="lg">
       <Menu />
-      <Image src={Banner} alt="bg" className={classes.bg} />
+      <Banner />
       <Spacing size={48} />
       <div className={classes.main}>
         <div className={classes.section}>LATEST READS</div>

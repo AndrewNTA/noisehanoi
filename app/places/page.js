@@ -9,10 +9,9 @@ import {
   Spacing,
   ScrollTopBtn,
   SkeletonLoading,
+  Banner,
 } from '../components';
 import { groupPlaces, mapPlaceGroupDisplay } from '../utils';
-import Image from 'next/image';
-import Banner from '../static/images/banner.png';
 import useStyles from './styles';
 
 const PLACES_QUERY = gql`
@@ -68,20 +67,19 @@ export default function Places() {
   return (
     <Container maxWidth="lg">
       <Menu />
-      <Image src={Banner} alt="bg" className={classes.bg} />
+      <Banner />
       <Spacing size={24} />
       <div className="google-map-code">
         <iframe
-          src="https://maper.app/map-details/NoMNC6ap70SRt3IaRb3z?go=true"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.0964843003007!2d105.84315961476884!3d21.02801578599432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab145bf89bd7%3A0xd94a869b494c04b6!2zMjkgTmcuIDM1IE5n4buNYyBLaMOhbmgsIE5n4buNYyBLaMOhbmgsIEjhu5MgQ2jDrSBNaW5oLCBWaWV0bmFt!5e0!3m2!1sen!2s!4v1629789012345!5m2!1sen!2s"
           width="100%"
-          height="400"
-          frameborder="0"
+          height="450"
           style={{ border: 0 }}
-          allowfullscreen=""
-          aria-hidden="false"
-          tabindex="0"
-          title="map"
-        ></iframe>
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="Google Maps"
+        />
       </div>
       <Spacing size={48} />
       <div>

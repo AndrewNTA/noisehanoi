@@ -3,7 +3,6 @@
 import { useMemo, useEffect, useState } from 'react';
 import { Container, Grid } from '@mui/material';
 import { useLazyQuery, gql } from '@apollo/client';
-import Image from 'next/image';
 import {
   Menu,
   Footer,
@@ -12,8 +11,8 @@ import {
   ScrollTopBtn,
   SpotifyIframe,
   SkeletonLoading,
+  Banner,
 } from '../components';
-import Banner from '../static/images/banner.png';
 import {
   genOneYearQuery,
   genStartDate,
@@ -91,7 +90,7 @@ export default function Gigs() {
   return (
     <Container maxWidth="lg">
       <Menu />
-      <Image src={Banner} alt="bg" className={classes.bg} />
+      <Banner />
       <Spacing size={48} />
       <Grid
         container

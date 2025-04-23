@@ -7,11 +7,6 @@ const useStyles = makeStyles((theme) => ({
       paddingRight: 0,
     },
   },
-  bg: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-  },
   section: {
     fontSize: '1.375rem',
     lineHeight: '1.75rem',

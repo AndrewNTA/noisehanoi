@@ -4,14 +4,16 @@ import { Container, Pagination } from '@mui/material';
 import { useLazyQuery, gql } from '@apollo/client';
 import { useEffect, useState, useMemo, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import Menu from '../components/Menu';
-import Footer from '../components/Footer';
-import Spacing from '../components/Spacing';
-import ScrollTopBtn from '../components/ScrollTopBtn';
-import SkeletonLoading from '../components/SkeletonLoading';
-import MetaTags from '../components/MetaTags';
+import {
+  Menu,
+  Banner,
+  Spacing,
+  Footer,
+  ScrollTopBtn,
+  SkeletonLoading,
+  MetaTags,
+} from '../components';
 import Image from 'next/image';
-import Banner from '../static/images/banner.png';
 import GroupBand from './Group';
 import useStyles from './styles';
 
@@ -82,7 +84,7 @@ function ArtistsContent() {
     <Container maxWidth="lg">
       <MetaTags />
       <Menu />
-      <Image src={Banner} alt="bg" className={classes.bg} />
+      <Banner />
       <Spacing size={24} />
       <div>
         <div className={classes.section}>A BUNCH OF ARTISTS</div>
