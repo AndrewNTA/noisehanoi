@@ -19,12 +19,7 @@ const nextConfig = {
     ],
     domains: ['media.graphassets.com'],
   },
-  experimental: {
-    appDir: true,
-  },
-  server: {
-    port: 3001,
-  },
+  // Port configuration should be set in package.json scripts instead
 }
 
 module.exports = nextConfig 
