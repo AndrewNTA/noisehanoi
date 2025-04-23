@@ -2,13 +2,14 @@
 
 import { Container, Pagination } from '@mui/material';
 import { useLazyQuery, gql } from '@apollo/client';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Menu from '../components/Menu';
 import Footer from '../components/Footer';
 import Spacing from '../components/Spacing';
 import ScrollTopBtn from '../components/ScrollTopBtn';
 import SkeletonLoading from '../components/SkeletonLoading';
+import MetaTags from '../components/MetaTags';
 import Image from 'next/image';
 import Banner from '../static/images/banner.png';
 import GroupBand from './Group';
@@ -35,7 +36,7 @@ const ARTISTS_QUERY = gql`
   }
 `;
 
-export default function Artists() {
+function ArtistsContent() {
   const router = useRouter();
   const classes = useStyles();
   const searchParams = useSearchParams();
@@ -59,7 +60,7 @@ export default function Artists() {
       top: 0,
       behavior: 'smooth',
     });
-  }, [groupId]);
+  }, [groupId, getArtists]);
 
   useEffect(() => {
     if (data?.artists.length) {
@@ -79,6 +80,7 @@ export default function Artists() {
 
   return (
     <Container maxWidth="lg">
+      <MetaTags />
       <Menu />
       <Image src={Banner} alt="bg" className={classes.bg} />
       <Spacing size={24} />
@@ -97,10 +99,10 @@ export default function Artists() {
                 <div className={classes.wrapper} key={artist.id}>
                   <Image
                     src={artist.photo?.url}
-                    alt="not found"
-                    className={classes.photo}
+                    alt={artist.bandName}
                     width={200}
                     height={200}
+                    className={classes.photo}
                   />
                   <div>
                     <a
@@ -127,8 +129,17 @@ export default function Artists() {
           </>
         )}
       </div>
+      <Spacing size={64} />
       <Footer />
       <ScrollTopBtn />
     </Container>
+  );
+}
+
+export default function Artists() {
+  return (
+    <Suspense fallback={<SkeletonLoading length={4} />}>
+      <ArtistsContent />
+    </Suspense>
   );
 }
