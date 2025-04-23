@@ -17,6 +17,13 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
+    domains: ['media.graphassets.com'],
+  },
+  experimental: {
+    appDir: true,
+  },
+  server: {
+    port: 3001,
   },
 }
 
