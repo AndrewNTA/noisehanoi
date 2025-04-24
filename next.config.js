@@ -16,8 +16,12 @@ const nextConfig = {
         hostname: 'ap-northeast-1.graphassets.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'media.graphassets.com',
+        pathname: '/**',
+      },
     ],
-    domains: ['media.graphassets.com'],
   },
   // Port configuration should be set in package.json scripts instead
 }
