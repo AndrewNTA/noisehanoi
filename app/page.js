@@ -14,7 +14,7 @@ import {
   ScrollTopBtn,
   SpotifyIframe,
   SkeletonLoading,
-  Banner
+  Banner,
 } from './components';
 import { months } from './constants';
 import { genEndDate, genStartDate, groupEventsByDate } from './utils';
@@ -68,6 +68,21 @@ const LeftSpacing = styled('div')({
   paddingLeft: '0.75rem',
 });
 
+const PastEventsItem = styled('div')({
+  lineHeight: '1.25rem',
+  fontStyle: 'italic',
+  fontWeight: 700,
+  textTransform: 'uppercase',
+  fontSize: '1.25rem',
+  paddingLeft: '0.75rem',
+  borderLeft: '2px solid #1EBDD3',
+  marginBottom: '2rem',
+  cursor: 'pointer',
+  '&:hover': {
+    color: '#1EBDD3',
+  },
+});
+
 const ARTICLES_QUERY = gql`
   query Articles {
     articles(first: 10, orderBy: publishedAt_DESC) {
@@ -101,7 +116,8 @@ const EVENTS_QUERY = gql`
 
 export default function Home() {
   const router = useRouter();
-  const { data: articleData, loading: articleLoading } = useQuery(ARTICLES_QUERY);
+  const { data: articleData, loading: articleLoading } =
+    useQuery(ARTICLES_QUERY);
   const startOfDate = useMemo(genStartDate, []);
   const endOfDate = useMemo(genEndDate, []);
   const { data: eventData, loading: eventLoading } = useQuery(EVENTS_QUERY, {
@@ -199,6 +215,19 @@ export default function Home() {
                 />
               </Content>
             )}
+            <Spacing size={32} />
+            <div>
+              <Title>PAST EVENTS</Title>
+              <Spacing size={16} />
+              <PastEventsItem>JAN - MAR 2025</PastEventsItem>
+              <PastEventsItem>OCT - DEC 2024</PastEventsItem>
+              <PastEventsItem>JUL - SEP 2024</PastEventsItem>
+              <PastEventsItem>APR - JUN 2024</PastEventsItem>
+              <MoreButton
+                text="more history"
+                onClick={() => router.push('/past-events')}
+              />
+            </div>
           </Grid>
         </Grid>
         <Spacing size={64} />
@@ -214,10 +243,10 @@ export default function Home() {
               <Spacing size={24} />
               <LeftSpacing>
                 At its heart is a simple, no-nonsense gig guide that does
-                exactly what it says on the tin. We&apos;ll also try to publish a bit
-                of writing, gig reviews, music reviews and opinion pieces and
-                the like. If you have an event that you would like to promote,
-                or an article you want published, send us an email!
+                exactly what it says on the tin. We&apos;ll also try to publish
+                a bit of writing, gig reviews, music reviews and opinion pieces
+                and the like. If you have an event that you would like to
+                promote, or an article you want published, send us an email!
               </LeftSpacing>
             </Content>
           </Grid>
