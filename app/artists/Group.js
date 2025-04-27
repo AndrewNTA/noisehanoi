@@ -4,60 +4,78 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { styled } from '@mui/material/styles'
 
-import ImgGr1T1 from '../static/images/avatar_gr1_1.jpg'
-import ImgGr1T2 from '../static/images/avatar_gr1_2.jpg'
-import ImgGr1T3 from '../static/images/avatar_gr1_3.jpeg'
+import ImgRock1 from '../static/images/avatar_rock_1.png'
+import ImgRock2 from '../static/images/avatar_rock_2.png'
+import ImgRock3 from '../static/images/avatar_rock_3.png'
 
-import ImgGr2T1 from '../static/images/avatar_gr2_1.jpg'
-import ImgGr2T2 from '../static/images/avatar_gr2_2.jpg'
-import ImgGr2T3 from '../static/images/avatar_gr2_3.jpg'
+import ImgIndie1 from '../static/images/avatar_indie_1.png'
+import ImgIndie2 from '../static/images/avatar_indie_2.png'
+import ImgIndie3 from '../static/images/avatar_indie_3.png'
 
-import ImgGr3T1 from '../static/images/avatar_gr3_1.jpg'
-import ImgGr3T2 from '../static/images/avatar_gr3_2.jpg'
-import ImgGr3T3 from '../static/images/avatar_gr3_3.jpg'
+import ImgReggae1 from '../static/images/avatar_reggae_1.jpg'
+import ImgReggae2 from '../static/images/avatar_reggae_2.jpg'
+import ImgReggae3 from '../static/images/avatar_reggae_3.jpg'
 
-import ImgGr4T1 from '../static/images/avatar_gr4_1.jpeg'
-import ImgGr4T2 from '../static/images/avatar_gr4_2.jpeg'
-import ImgGr4T3 from '../static/images/avatar_gr4_3.jpg'
+import ImgPunk1 from '../static/images/avatar_punk_1.jpg'
+import ImgPunk2 from '../static/images/avatar_punk_2.jpg'
+import ImgPunk3 from '../static/images/avatar_punk_3.jpg'
 
-import ImgGr5T1 from '../static/images/avatar_gr5_1.jpg'
-import ImgGr5T2 from '../static/images/avatar_gr5_2.jpg'
-import ImgGr5T3 from '../static/images/avatar_gr5_3.jpg'
+import ImgSoul1 from '../static/images/avatar_soul_1.jpeg'
+import ImgSoul2 from '../static/images/avatar_soul_2.jpeg'
+import ImgSoul3 from '../static/images/avatar_soul_3.jpg'
 
-import ImgGr6T1 from '../static/images/avatar_gr6_1.jpg'
-import ImgGr6T2 from '../static/images/avatar_gr6_2.jpg'
-import ImgGr6T3 from '../static/images/avatar_gr6_3.jpg'
+import ImgElec1 from '../static/images/avatar_elec_1.jpg'
+import ImgElec2 from '../static/images/avatar_elec_2.jpg'
+import ImgElec3 from '../static/images/avatar_elec_3.jpg'
+
+import ImgCover1 from '../static/images/avatar_cover_1.jpg'
+import ImgCover2 from '../static/images/avatar_cover_2.jpg'
+import ImgCover3 from '../static/images/avatar_cover_3.jpg'
+
+import ImgBand1 from '../static/images/avatar_band_1.png'
+import ImgBand2 from '../static/images/avatar_band_2.png'
+import ImgBand3 from '../static/images/avatar_band_3.png'
 
 const groupList = [
   {
-    id: 'rock_indie',
-    title: 'Rock / Indie',
-    images: [ImgGr1T1, ImgGr1T2, ImgGr1T3],
+    id: 'rock',
+    title: 'Rock',
+    images: [ImgRock1, ImgRock2, ImgRock3],
+  },
+  {
+    id: 'indie',
+    title: 'Indie',
+    images: [ImgIndie1, ImgIndie2, ImgIndie3],
   },
   {
     id: 'reggae_hiphop_afrobeat',
     title: 'Reggae / Hip hop / Afrobeat',
-    images: [ImgGr2T1, ImgGr2T2, ImgGr2T3],
+    images: [ImgReggae1, ImgReggae2, ImgReggae3],
   },
   {
     id: 'punk_metal_grunge',
     title: 'Punk / Metal / Grunge',
-    images: [ImgGr3T1, ImgGr3T2, ImgGr3T3],
+    images: [ImgPunk1, ImgPunk2, ImgPunk3],
   },
   {
     id: 'soul_jazz_blues_folk',
     title: 'Soul / Jazz / Blues / Folk',
-    images: [ImgGr4T1, ImgGr4T2, ImgGr4T3],
+    images: [ImgSoul1, ImgSoul2, ImgSoul3],
   },
   {
     id: 'electronic_experimental_other',
     title: 'Electronic / Experimental / Other',
-    images: [ImgGr5T1, ImgGr5T2, ImgGr5T3],
+    images: [ImgElec1, ImgElec2, ImgElec3],
   },
   {
     id: 'cover_bands_and_tributes',
     title: 'Cover bands and tributes',
-    images: [ImgGr6T1, ImgGr6T2, ImgGr6T3],
+    images: [ImgCover1, ImgCover2, ImgCover3],
+  },
+  {
+    id: 'band_graveyard_rip',
+    title: 'Band Graveyard R.I.P',
+    images: [ImgBand1, ImgBand2, ImgBand3],
   },
 ]
 
