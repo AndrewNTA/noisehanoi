@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { Grid, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import { useLazyQuery, gql } from '@apollo/client';
 import { useSearchParams } from 'next/navigation';
@@ -91,7 +91,7 @@ const getFilterDate = (filter) => {
   };
 };
 
-export default function PastEvents() {
+function PastEventsContent() {
   const searchParams = useSearchParams();
   const filterId = searchParams.get('filter');
 
@@ -230,5 +230,13 @@ export default function PastEvents() {
       <Footer />
       <ScrollTopBtn />
     </MainContainer>
+  );
+}
+
+export default function PastEvents() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PastEventsContent />
+    </Suspense>
   );
 }
