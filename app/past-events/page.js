@@ -1,8 +1,9 @@
 'use client';
 
-import { useMemo, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Grid, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import { useLazyQuery, gql } from '@apollo/client';
+import { useSearchParams } from 'next/navigation';
 import {
   Menu,
   Footer,
@@ -23,8 +24,12 @@ import {
 } from '../gigs/styles';
 
 const PAST_EVENTS_QUERY = gql`
-  query PastEvents($end: DateTime) {
-    events(first: 100, orderBy: time_DESC, where: { time_lte: $end }) {
+  query PastEvents($end: DateTime, $start: DateTime) {
+    events(
+      first: 100
+      orderBy: time_DESC
+      where: { time_lte: $end, time_gte: $start }
+    ) {
       id
       extraInfo
       eventName
@@ -44,19 +49,61 @@ const createMonthKey = (time) => {
   return `${year}-${month}`;
 };
 
+const getFilterDate = (filter) => {
+  if (filter === 'jan-mar-2025') {
+    const stateDate = new Date(2025, 0, 1, 0, 0, 0, 0);
+    const endDate = new Date(2025, 2, 31, 23, 59, 59, 999);
+    return {
+      startDate: stateDate.toISOString(),
+      endDate: endDate.toISOString(),
+    };
+  }
+  if (filter === 'oct-dec-2024') {
+    const stateDate = new Date(2024, 9, 1, 0, 0, 0, 0);
+    const endDate = new Date(2024, 11, 31, 23, 59, 59, 999);
+    return {
+      startDate: stateDate.toISOString(),
+      endDate: endDate.toISOString(),
+    };
+  }
+  if (filter === 'jul-sep-2024') {
+    const stateDate = new Date(2024, 6, 1, 0, 0, 0, 0);
+    const endDate = new Date(2024, 8, 30, 23, 59, 59, 999);
+    return {
+      startDate: stateDate.toISOString(),
+      endDate: endDate.toISOString(),
+    };
+  }
+  if (filter === 'apr-jun-2024') {
+    const stateDate = new Date(2024, 3, 1, 0, 0, 0, 0);
+    const endDate = new Date(2024, 5, 30, 23, 59, 59, 999);
+    return {
+      startDate: stateDate.toISOString(),
+      endDate: endDate.toISOString(),
+    };
+  }
+  const startOfDate = new Date(2024, 3, 1, 0, 0, 0, 0);
+  const endOfDate = new Date();
+  endOfDate.setDate(endOfDate.getDate() - 1);
+  return {
+    startDate: startOfDate.toISOString(),
+    endDate: endOfDate.toISOString(),
+  };
+};
+
 export default function PastEvents() {
+  const searchParams = useSearchParams();
+  const filterId = searchParams.get('filter');
+
   const [events, setEvents] = useState([]);
-  const endOfDate = useMemo(() => {
-    const date = new Date();
-    date.setDate(date.getDate() - 1);
-    return date.toISOString();
-  }, []);
   const [getEvents, { data, loading }] = useLazyQuery(PAST_EVENTS_QUERY);
 
   useEffect(() => {
+    const { startDate, endDate } = getFilterDate(filterId);
     getEvents({
       variables: {
-        end: endOfDate,
+        start: startDate,
+        end: endDate,
       },
     });
     window.scrollTo({
@@ -73,9 +120,11 @@ export default function PastEvents() {
     }
     if (data?.events.length === 100) {
       const lastItem = data.events[99];
+      const { startDate } = getFilterDate(filterId);
       getEvents({
         variables: {
           end: lastItem.time,
+          start: startDate,
         },
       });
     }

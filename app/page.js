@@ -219,10 +219,26 @@ export default function Home() {
             <div>
               <Title>PAST EVENTS</Title>
               <Spacing size={16} />
-              <PastEventsItem>JAN - MAR 2025</PastEventsItem>
-              <PastEventsItem>OCT - DEC 2024</PastEventsItem>
-              <PastEventsItem>JUL - SEP 2024</PastEventsItem>
-              <PastEventsItem>APR - JUN 2024</PastEventsItem>
+              <PastEventsItem
+                onClick={() => router.push('/past-events?filter=jan-mar-2025')}
+              >
+                JAN - MAR 2025
+              </PastEventsItem>
+              <PastEventsItem
+                onClick={() => router.push('/past-events?filter=oct-dec-2024')}
+              >
+                OCT - DEC 2024
+              </PastEventsItem>
+              <PastEventsItem
+                onClick={() => router.push('/past-events?filter=jul-sep-2024')}
+              >
+                JUL - SEP 2024
+              </PastEventsItem>
+              <PastEventsItem
+                onClick={() => router.push('/past-events?filter=apr-jun-2024')}
+              >
+                APR - JUN 2024
+              </PastEventsItem>
               <MoreButton
                 text="more history"
                 onClick={() => router.push('/past-events')}
