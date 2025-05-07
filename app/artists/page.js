@@ -66,6 +66,8 @@ function ArtistsContent() {
   useEffect(() => {
     if (data?.artists.length) {
       setArtists(data.artists);
+    } else {
+      setArtists([]);
     }
   }, [data?.artists]);
 
