@@ -220,6 +220,11 @@ export default function Home() {
               <Title>PAST EVENTS</Title>
               <Spacing size={16} />
               <PastEventsItem
+                onClick={() => router.push('/past-events?filter=apr-jun-2025')}
+              >
+                APR - JUN 2025
+              </PastEventsItem>
+              <PastEventsItem
                 onClick={() => router.push('/past-events?filter=jan-mar-2025')}
               >
                 JAN - MAR 2025
