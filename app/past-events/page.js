@@ -50,6 +50,22 @@ const createMonthKey = (time) => {
 };
 
 const getFilterDate = (filter) => {
+  if (filter === 'oct-dec-2025') {
+    const stateDate = new Date(2025, 9, 1, 0, 0, 0, 0);
+    const endDate = new Date(2025, 11, 31, 23, 59, 59, 999);
+    return {
+      startDate: stateDate.toISOString(),
+      endDate: endDate.toISOString(),
+    };
+  }
+  if (filter === 'jul-sep-2025') {
+    const stateDate = new Date(2025, 6, 1, 0, 0, 0, 0);
+    const endDate = new Date(2025, 8, 31, 23, 59, 59, 999);
+    return {
+      startDate: stateDate.toISOString(),
+      endDate: endDate.toISOString(),
+    };
+  }
   if (filter === 'apr-jun-2025') {
     const stateDate = new Date(2025, 3, 1, 0, 0, 0, 0);
     const endDate = new Date(2025, 5, 31, 23, 59, 59, 999);
