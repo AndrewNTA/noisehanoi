@@ -4,78 +4,46 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { styled } from '@mui/material/styles'
 
-import ImgRock1 from '../static/images/avatar_rock_1.png'
-import ImgRock2 from '../static/images/avatar_rock_2.png'
-import ImgRock3 from '../static/images/avatar_rock_3.png'
-
-import ImgIndie1 from '../static/images/avatar_indie_1.png'
-import ImgIndie2 from '../static/images/avatar_indie_2.png'
-import ImgIndie3 from '../static/images/avatar_indie_3.png'
-
-import ImgReggae1 from '../static/images/avatar_reggae_1.jpg'
-import ImgReggae2 from '../static/images/avatar_reggae_2.jpg'
-import ImgReggae3 from '../static/images/avatar_reggae_3.jpg'
-
-import ImgPunk1 from '../static/images/avatar_punk_1.jpg'
-import ImgPunk2 from '../static/images/avatar_punk_2.jpg'
-import ImgPunk3 from '../static/images/avatar_punk_3.jpg'
-
-import ImgSoul1 from '../static/images/avatar_soul_1.jpeg'
-import ImgSoul2 from '../static/images/avatar_soul_2.jpeg'
-import ImgSoul3 from '../static/images/avatar_soul_3.jpg'
-
-import ImgElec1 from '../static/images/avatar_elec_1.jpg'
-import ImgElec2 from '../static/images/avatar_elec_2.jpg'
-import ImgElec3 from '../static/images/avatar_elec_3.jpg'
-
-import ImgCover1 from '../static/images/avatar_cover_1.jpg'
-import ImgCover2 from '../static/images/avatar_cover_2.jpg'
-import ImgCover3 from '../static/images/avatar_cover_3.jpg'
-
-import ImgBand1 from '../static/images/avatar_band_1.png'
-import ImgBand2 from '../static/images/avatar_band_2.png'
-import ImgBand3 from '../static/images/avatar_band_3.png'
-
 const groupList = [
   {
     id: 'rock',
     title: 'Rock',
-    images: [ImgRock1, ImgRock2, ImgRock3],
+    images: ['/images/avatar_rock_1.png', '/images/avatar_rock_2.png', '/images/avatar_rock_3.png'],
   },
   {
     id: 'indie',
     title: 'Indie',
-    images: [ImgIndie1, ImgIndie2, ImgIndie3],
+    images: ['/images/avatar_indie_1.png', '/images/avatar_indie_2.png', '/images/avatar_indie_3.png'],
   },
   {
     id: 'reggae_hiphop_afrobeat',
     title: 'Reggae / Hip hop / Afrobeat',
-    images: [ImgReggae1, ImgReggae2, ImgReggae3],
+    images: ['/images/avatar_reggae_1.jpg', '/images/avatar_reggae_2.jpg', '/images/avatar_reggae_3.jpg'],
   },
   {
     id: 'punk_metal_grunge',
     title: 'Punk / Metal / Grunge',
-    images: [ImgPunk1, ImgPunk2, ImgPunk3],
+    images: ['/images/avatar_punk_1.jpg', '/images/avatar_punk_2.jpg', '/images/avatar_punk_3.jpg'],
   },
   {
     id: 'soul_jazz_blues_folk',
     title: 'Soul / Jazz / Blues / Folk',
-    images: [ImgSoul1, ImgSoul2, ImgSoul3],
+    images: ['/images/avatar_soul_1.jpeg', '/images/avatar_soul_2.jpeg', '/images/avatar_soul_3.jpg'],
   },
   {
     id: 'electronic_experimental_other',
     title: 'Electronic / Experimental / Other',
-    images: [ImgElec1, ImgElec2, ImgElec3],
+    images: ['/images/avatar_elec_1.jpg', '/images/avatar_elec_2.jpg', '/images/avatar_elec_3.jpg'],
   },
   {
     id: 'cover_bands_and_tributes',
     title: 'Cover bands and tributes',
-    images: [ImgCover1, ImgCover2, ImgCover3],
+    images: ['/images/avatar_cover_1.jpg', '/images/avatar_cover_2.jpg', '/images/avatar_cover_3.jpg'],
   },
   {
     id: 'band_graveyard_rip',
     title: 'Band Graveyard R.I.P',
-    images: [ImgBand1, ImgBand2, ImgBand3],
+    images: ['/images/avatar_band_1.png', '/images/avatar_band_2.png', '/images/avatar_band_3.png'],
   },
 ]
 
