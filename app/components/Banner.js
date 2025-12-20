@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { styled } from '@mui/material/styles';
-import BannerSrc from '../static/images/banner.png';
 
 const ImageBanner = styled(Image)({
   width: '100%',
@@ -11,5 +10,5 @@ const ImageBanner = styled(Image)({
 });
 
 export default function Banner() {
-  return <ImageBanner src={BannerSrc} alt="bg-banner" width={970} height={600} />;
+  return <ImageBanner src="/images/banner.png" alt="bg-banner" width={970} height={600} />;
 }

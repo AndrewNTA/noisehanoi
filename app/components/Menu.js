@@ -3,7 +3,6 @@
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { styled } from '@mui/material/styles'
-import Logo from '../static/images/logo.png'
 
 const MenuWrapper = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -74,7 +73,7 @@ export default function Menu() {
     <MenuWrapper>
       <MenuLogoWrapper onClick={() => router.push('/')}>
         <MenuLogo 
-          src={Logo}
+          src="/images/logo.png"
           alt="noisehanoi" 
           width={40}
           height={40}

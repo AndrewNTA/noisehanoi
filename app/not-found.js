@@ -3,7 +3,6 @@
 import { Container } from '@mui/material';
 import Image from 'next/image';
 import { Menu, Footer } from './components';
-import NotFoundImage from './static/images/not-found.png';
 
 export default function NotFound() {
   return (
@@ -11,7 +10,7 @@ export default function NotFound() {
       <Menu />
 
       <Image
-        src={NotFoundImage}
+        src="/images/not-found.png"
         alt="Not Found"
         width={900}
         height={600}
