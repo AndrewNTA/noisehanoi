@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 import { styled } from '@mui/material/styles';
 
@@ -10,5 +8,5 @@ const ImageBanner = styled(Image)({
 });
 
 export default function Banner() {
-  return <ImageBanner src="/images/banner.png" alt="bg-banner" width={970} height={600} />;
+  return <ImageBanner src="/images/banner.png" alt="bg" width={970} height={600} />;
 }
