@@ -1,5 +1,3 @@
-'use client';
-
 function Spacing({ size, color }) {
   return (
     <div

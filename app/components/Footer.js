@@ -1,5 +1,3 @@
-'use client'
-
 import { Grid } from '@mui/material'
 import { useRouter } from 'next/navigation'
 import { styled } from '@mui/material/styles'

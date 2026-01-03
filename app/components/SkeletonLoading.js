@@ -1,5 +1,3 @@
-'use client'
-
 import { Skeleton, Typography } from '@mui/material'
 import Spacing from './Spacing'
 

@@ -1,5 +1,3 @@
-'use client'
-
 import Event from './Event';
 import useStyles from './styles';
 function GigItem({ day, date, events }) {

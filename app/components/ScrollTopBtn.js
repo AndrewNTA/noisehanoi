@@ -1,5 +1,3 @@
-'use client'
-
 import { useState, useEffect } from 'react'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import useStyles from './styles'

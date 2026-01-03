@@ -1,5 +1,3 @@
-'use client'
-
 import InfoIcon from '@mui/icons-material/Info'
 import { formatPrice, formatDisplayTime } from '../utils'
 import useStyles from './styles'

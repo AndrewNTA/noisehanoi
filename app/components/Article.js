@@ -1,5 +1,3 @@
-'use client'
-
 import { useRouter } from 'next/navigation'
 import Spacing from './Spacing'
 import useStyles from './styles'

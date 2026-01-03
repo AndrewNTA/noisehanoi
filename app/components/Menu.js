@@ -1,5 +1,3 @@
-'use client'
-
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { styled } from '@mui/material/styles'

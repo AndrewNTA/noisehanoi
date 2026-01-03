@@ -1,5 +1,3 @@
-'use client'
-
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight'
 import { styled } from '@mui/material/styles'
 
